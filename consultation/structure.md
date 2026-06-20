@@ -43,7 +43,7 @@ consultation/
 ├── 05-architecture-docs.mdc
 ├── 06-traceability.mdc
 ├── 08-backlog-implement.mdc
-├── 09-validation-open-questions.mdc
+├── 07-verification-validation-levels.mdc
 └── 10-design-mockups.mdc
 ```
 
@@ -224,7 +224,7 @@ Step-by-step guides for filling the product tree. Every step starts with an **in
 | 3 | Create `business-scenarios.md` — **Context and Boundary** table; at least one `SCN-##` with actor, trigger, goal, main flow |
 | 4 | Create `glossary.md` — domain terms and acronyms used in scope docs |
 | 5 | Create root `open-questions.md` — record unresolved scope gaps as `Q-S##` rows only |
-| 6 | Validate per [09-validation-open-questions.mdc](../.cursor/rules/09-validation-open-questions.mdc) |
+| 6 | Validate per [07-verification-validation-levels.mdc](../.cursor/rules/07-verification-validation-levels.mdc) Level 1 |
 
 **Done when:** goals and scenarios exist; boundary is explicit; glossary covers key terms; open questions are listed, not hidden in prose.
 
@@ -351,16 +351,18 @@ Step-by-step guides for filling the product tree. Every step starts with an **in
 
 **Goal:** confirm the doc set is complete before writing code under `6-code/`.
 
-Run the full checklist in [09-validation-open-questions.mdc](../.cursor/rules/09-validation-open-questions.mdc):
+Run the leveled gate in [07-verification-validation-levels.mdc](../.cursor/rules/07-verification-validation-levels.mdc) — **Level 1 → 11 in order**; stop at first failure and record gaps in `open-questions.md`:
 
-| Area | Key checks |
-|------|------------|
-| **Process** | Interview confirmed; templates applied; changed files summarized |
-| **Scope → Features** | Every Must `GOL-##` and in-scope `SCN-##` maps to ≥1 `F##`; features-list brief ↔ UR |
-| **Features** | Must features **Dev-ready**; **Requires** synced; no blocking `Q-F##-##` |
-| **Architecture** | Solution strategy ready; no open `Q-A##`; every `F##` in a block; runtime participants mapped |
-| **Design** | Mockups/journeys resolve; `db-and-dfd.md` matches feature data + BB; no orphan SVGs |
-| **Development** | Backlog covers Must FRs; AC verifiable; traceability chain complete; `Q-V##` resolved or stubbed in BL notes |
+| Level | Area |
+|-------|------|
+| 1 | Scope — goals, scenarios, features-list coverage |
+| 2 | Feature specs ↔ features-list and scope |
+| 3 | Solution strategy ready |
+| 4–5 | Building blocks, runtime views, feature ↔ BB links |
+| 6 | End-to-end traceability to stakeholders and strategy |
+| 7–9 | UI readiness, user journeys, mockup SVGs |
+| 10 | Backlog, implementation order, tests |
+| 11 | Critical open questions cleared for `6-code/` |
 
 **Implementation gate:** the first `BL-##` pre-flight ([08-backlog-implement.mdc](../.cursor/rules/08-backlog-implement.mdc)) should pass without cancellation — upstream feature, FR, BB, design refs, and ADRs all resolve.
 

@@ -4,7 +4,7 @@ Copy the relevant block when creating a file. Replace `{{placeholders}}`. Use Me
 
 **Related:** [structure.md](structure.md) · [Cursor rules](../.cursor/rules/) · Layers and conventions: [structure.md — Directory tree](structure.md#directory-tree)
 
-Sections marked **tbd** — required filenames in [structure.md](structure.md) and [09-validation-open-questions](../.cursor/rules/09-validation-open-questions.mdc); full bodies added later.
+Sections marked **tbd** — required filenames in [structure.md](structure.md) and [07-verification-validation-levels](../.cursor/rules/07-verification-validation-levels.mdc); full bodies added later.
 
 ## Table of contents
 
@@ -812,7 +812,7 @@ tbd
 
 ## Deliverables *(optional)*
 
-Adopt via interview only. [structure.md](structure.md) · [09-validation-open-questions](../.cursor/rules/09-validation-open-questions.mdc)
+Adopt via interview only. [structure.md](structure.md) · [07-verification-validation-levels](../.cursor/rules/07-verification-validation-levels.mdc)
 
 ### 6-code/
 

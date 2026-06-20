@@ -64,7 +64,7 @@ When closing the last `BL-##`, set feature **Status** → **Implemented** in the
 4. Create `2-features/F##_slug.md` with **Overview** — set **Status** → `Specifying`
 5. Complete spec sections; when validation passes, set **Status** → `Dev-ready`
 6. Propagate: solution strategy ([04-solution-strategy.mdc](04-solution-strategy.mdc)) — pass ready gate — then building blocks, runtime flow; traceability, backlog, mockups/journeys if UI-heavy
-7. Validate cross-references per [09-validation-open-questions.mdc](09-validation-open-questions.mdc)
+7. Validate cross-references per [07-verification-validation-levels.mdc](07-verification-validation-levels.mdc)
 
 ## Renaming or removing a feature
 

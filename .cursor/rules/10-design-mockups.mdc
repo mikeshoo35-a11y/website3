@@ -61,4 +61,4 @@ Mermaid `journey` = satisfaction/emotion; SVG = layout/navigation. Use both.
 4. Propagate token/layout changes to `library.md`, SVGs, journeys, feature UI links in one pass
 5. New `MCK-##` row + `CMP-##` in `library.md` before creating SVG
 
-Validate per [09-validation-open-questions.mdc](09-validation-open-questions.mdc) mockup items.
+Validate per [07-verification-validation-levels.mdc](07-verification-validation-levels.mdc) Levels 7–9.

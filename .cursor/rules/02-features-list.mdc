@@ -116,7 +116,7 @@ Removing or materially changing an established feature requires explicit intervi
 
 ## Validation
 
-Before finishing, verify per [09-validation-open-questions.mdc](09-validation-open-questions.mdc):
+Before finishing, verify per [07-verification-validation-levels.mdc](07-verification-validation-levels.mdc) Level 1–2:
 
 - [ ] Established feature rows unchanged unless user explicitly requested edit
 - [ ] New rows added only for scope capabilities not covered by established `F##`

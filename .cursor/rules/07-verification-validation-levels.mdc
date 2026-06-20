@@ -1,0 +1,243 @@
+---
+description: Leveled verification & validation gate and open-questions rules — run before implementation
+globs: 1-scope/**/*.md,2-features/**/*.md,3-arch/**/*.md,4-design/**/*.md,5-dev/**/*.md,open-questions.md
+alwaysApply: false
+---
+
+# Verification & Validation — Leveled Gate
+
+Run when the user asks to validate readiness, verify documentation, or start implementation. Evaluate **Level 1 → 11 in order**. **Do not evaluate or report on levels above the first failure.**
+
+On any failed check: add or update a row in `open-questions.md` ([Open Questions](#open-questions)); do not hide gaps in prose.
+
+## Process
+
+1. Read cited artifacts for the current level only.
+2. Mark each sub-check **Pass** / **Fail** with one-line evidence.
+3. If any Fail → record open question(s), emit report ([Report format](#report-format)), **stop**.
+4. If all Pass → proceed to next level.
+5. After Level 11 Pass → report **Ready for `6-code/`**; first `BL-##` may use [08-backlog-implement.mdc](08-backlog-implement.mdc) pre-flight.
+
+For ID/traceability detail while checking, use [06-traceability.mdc](06-traceability.mdc).
+
+## Edit hygiene *(every structure update)*
+
+- [ ] Interview completed and user confirmed
+- [ ] Impact assessed per [structure.md — Flows](../consultation/structure.md#flows)
+- [ ] Templates applied for new files
+- [ ] Cross-references validated
+- [ ] Open questions captured; summary with changed files presented
+- [ ] `F##`, `UR-F##-##`, `FR-F##-##`, `NFR-##`, `ADR-##` consistent across files
+- [ ] Feature **Status** per [03-feature-lifecycle.mdc](03-feature-lifecycle.mdc)
+- [ ] Glossary terms linked on first use per file
+- [ ] Mermaid updated where flows changed
+- [ ] `6-code/` traceability updated if adopted and upstream changed materially
+
+---
+
+## Level 1 — Scope foundation
+
+**Question:** Are business scenarios, stakeholders, goals, and a features inventory in place that covers all goals, desires, and problems?
+
+| Check | Pass when |
+|-------|-----------|
+| Stakeholders & goals | `1-scope/stakeholders-and-goals.md` has ≥1 `STK-##`, ≥1 `GOL-##`; constraints/assumptions/non-goals reviewed |
+| Business scenarios | `1-scope/business-scenarios.md` has boundary table + ≥1 in-scope `SCN-##` (actor, trigger, goal, main flow) |
+| Glossary | Key domain terms in `1-scope/glossary.md` |
+| Features inventory | `1-scope/features-list.md` exists; every **Must** `GOL-##` and in-scope `SCN-##` maps to ≥1 `F##`; brief column reflects user-visible capability |
+| Coverage | No Must goal or in-scope scenario lacks a feature row; non-goals respected per [02-features-list.mdc](02-features-list.mdc) |
+
+**On fail:** `Q-S##` in **Scope** section.
+
+---
+
+## Level 2 — Feature specifications
+
+**Question:** Do feature specs exist, align with the features list, and cover scope?
+
+| Check | Pass when |
+|-------|-----------|
+| Files | Every **Must** `F##` in features-list has matching `2-features/F##_*.md` |
+| List sync | Frontmatter ID, **Status**, **Requires**, stakeholders ↔ features-list row |
+| Scope trace | Each Must spec has ≥1 `UR-F##-##` traced to `GOL-##` and/or `SCN-##` |
+| Brief ↔ UR | features-list **User Requirements (brief)** ↔ primary UR summary |
+| Dependencies | **Requires** synced across list, frontmatter, Overview, diagram; no cycles |
+
+**On fail:** `Q-F##-##` (Features section) or `Q-S##` if scope gap.
+
+**Gate:** Must **Must** `F##` rows at least **Specifying** with Overview + UR before Level 3.
+
+---
+
+## Level 3 — Solution strategy
+
+**Question:** Is architecture strategy defined and relevant to available features?
+
+| Check | Pass when |
+|-------|-----------|
+| Document | `3-arch/solution-strategy.md` exists and is not placeholder-only |
+| Ready gate | All items in [04-solution-strategy.mdc — Ready checklist](04-solution-strategy.mdc#ready-checklist) pass |
+| Feature relevance | Every **Must** `F##` appears in NFR **Features**, ADR **Affects**, or Overview **Trace** |
+| No blockers | No open `Q-A##`; structural ADRs **Accepted** |
+
+**On fail:** `Q-A##`.
+
+---
+
+## Level 4 — Building blocks & runtime views
+
+**Question:** Are building blocks and runtime views connected to feature flows?
+
+| Check | Pass when |
+|-------|-----------|
+| Building blocks | `3-arch/building-blocks.md` has L1 `BB-##` (~5–12); each lists **Features**; Level/Parent/Type set per [05-architecture-docs.mdc](05-architecture-docs.mdc) |
+| Feature → FR → BB | Every `FR-F##-##` targets a `BB-##` or documented external |
+| Runtime views | Cross-cutting/async/external flows in `runtime-views.md` as `RT-##`; participants map to `BB-##` or `(external)` |
+| Feature flows | Each spec **Runtime flow** / **UI flow** references `FR-F##-##`; cross-feature paths covered by `RT-##` where needed |
+
+**On fail:** `Q-A##`.
+
+---
+
+## Level 5 — Feature ↔ block links
+
+**Question:** Do features link to building blocks in their descriptions?
+
+| Check | Pass when |
+|-------|-----------|
+| Overview **Blocks** | Every **Dev-ready** Must feature lists all implementing `BB-##` |
+| Bidirectional | Each cited `BB-##` **Features** column includes that `F##` |
+| FR links | FR rows cite target `BB-##` where applicable |
+
+**On fail:** `Q-F##-##` or `Q-A##`.
+
+---
+
+## Level 6 — End-to-end relevance
+
+**Question:** Do features and building blocks trace back to strategy, stakeholders, and scenarios?
+
+| Check | Pass when |
+|-------|-----------|
+| Strategy | Every `BB-##` supports ≥1 Must `F##`; ADRs/NFRs cite affected features |
+| Stakeholders | Must features map to `STK-##` / goals via UR → `GOL-##` |
+| Scenarios | Must user journeys in scope covered by `SCN-##` → UR → FR → `F##` |
+| Matrix | `5-dev/traceability.md` chain `GOL → SCN → UR → FR → F## → BL` coherent for Must scope (BL may be pending until Level 10) |
+
+**On fail:** record in the section matching the gap (`Q-S##`, `Q-F##-##`, `Q-A##`).
+
+---
+
+## Level 7 — UI & screen readiness for design
+
+**Question:** Is there enough UI/screen description at feature and architecture level to start design?
+
+| Check | Pass when |
+|-------|-----------|
+| Feature UI | User-facing Must features have **UI flow** (screens, transitions, key states/errors) |
+| Screen inventory | `4-design/library.md` screen inventory lists planned views for Must paths |
+| Architecture UI | NFRs/ADRs cover platform, offline, accessibility, or nav constraints affecting UI |
+| Mockup index | `4-design/mockups.md` has **Layout (planned)** or spec rows for Must screens (`MCK-##` traced to `F##` / `FR`) |
+
+**On fail:** `Q-D##` or `Q-F##-##`.
+
+---
+
+## Level 8 — User journeys
+
+**Question:** Do user journeys cover all flows for all features and building-block logic?
+
+| Check | Pass when |
+|-------|-----------|
+| Journey set | `4-design/user-journeys.md` has `JRN-##` for each Must end-to-end path |
+| Feature coverage | Every Must **UI flow** step appears in ≥1 journey |
+| BB/runtime | Steps that cross blocks, external systems, or async paths reflect `RT-##` / **Runtime flow** |
+| Visual flow | Each journey **Visual flow** references valid `MCK-##` or explicit `—` for non-visual steps |
+
+**On fail:** `Q-D##`.
+
+---
+
+## Level 9 — Mockups (SVGs)
+
+**Question:** Are all user-visible views in journeys backed by mockups and linked in journey files?
+
+| Check | Pass when |
+|-------|-----------|
+| Index | Every `MCK-##` in journeys exists in `mockups.md` |
+| SVG | Each linked `MCK-##` resolves to `4-design/mockups/screens/MCK-##-*.svg` or explicit spec-only (`—`) per [10-design-mockups.mdc](10-design-mockups.mdc) |
+| Journey links | Journey steps cite correct `MCK-##`; **Visual flow** uses only existing IDs |
+| Orphans | No orphan SVGs; filename prefix matches ID; SVG well-formed; paths relative to `4-design/` |
+
+**On fail:** `Q-D##`.
+
+---
+
+## Level 10 — Backlog & tests
+
+**Question:** Does the backlog cover all features with order and tests?
+
+| Check | Pass when |
+|-------|-----------|
+| Coverage | Every Must `FR-F##-##` maps to ≥1 `BL-##` with verifiable Given/When/Then AC |
+| Order | `5-dev/backlog.md` has **Suggested implementation order** and dependency diagram |
+| Tests | Each `BL-##` cites `TC-##`; matching rows in `5-dev/testing-plan.md` |
+| Traceability | `5-dev/traceability.md` updated: `FR → BL → TC` for Must scope |
+
+**On fail:** `Q-V##`.
+
+---
+
+## Level 11 — Open questions cleared for code
+
+**Question:** Are all critical open questions resolved so implementation can start?
+
+| Check | Pass when |
+|-------|-----------|
+| Scope–Design | No blocking rows in `open-questions.md` for Must scope (or each has explicit MVP stub documented in target doc **and** cited in relevant `BL-##` notes) |
+| Feature blockers | No blocking `Q-F##-##` for Must features |
+| Dev scaffold | `Q-V##` resolved or stubbed per [08-backlog-implement.mdc](08-backlog-implement.mdc) (e.g. `6-code/` path) |
+| Feature status | Must features **Dev-ready** (or **In development** if BL already started) |
+
+**On fail:** add/keep row in appropriate section; do **not** start `6-code/` until Pass.
+
+---
+
+## Report format
+
+```
+V&V Report — <product>
+Highest level passed: Level N
+Status: Blocked at Level N+1 | Ready for 6-code/
+
+Level N+1 — <title>
+- Fail: <check> — <one-line reason>
+- Open question: [Q-…](open-questions.md#q-…)
+
+Levels not evaluated: N+2 … 11
+```
+
+When **Ready for 6-code/**:
+
+```
+V&V Report — <product>
+Status: Ready for 6-code/
+All levels 1–11: Pass
+Next: first eligible BL-## per 08-backlog-implement.mdc
+```
+
+---
+
+## Open Questions
+
+One file at product root: `open-questions.md`. Template: [templates.md — open-questions.md](../consultation/templates.md#open-questionsmd).
+
+| Section | ID prefix | Phase area |
+|---------|-----------|------------|
+| Scope | `Q-S##` | `1-scope/` |
+| Features | `Q-F##-##` | `2-features/` — include **Feature** column |
+| Architecture | `Q-A##` | `3-arch/` |
+| Design | `Q-D##` | `4-design/` |
+| Development | `Q-V##` | `5-dev/`, `6-code/` |
+
+**Rules:** one row per question; **open only** — remove when answered; record answer in the target doc, not here. Prefix `<a id="q-…"></a>` on the `#` cell (slug = lowercase ID, e.g. `Q-V01` → `#q-v01`). Do not duplicate questions in phase or feature files.
