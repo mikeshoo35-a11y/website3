@@ -39,7 +39,7 @@ Lifecycle for `F##` in `features-list.md` and `F##_*.md` frontmatter. Distinct f
 | Field | Must match |
 |-------|------------|
 | `features-list.md` **Status** | `F##_*.md` frontmatter `status:` |
-| **Requires** | frontmatter `requires`, Overview **Requires**, dependency table, diagram |
+| **Requires** | frontmatter `requires`, Overview **Requires**, dependency diagram |
 | Status change | Update list + frontmatter in one edit |
 
 ## Relationship to backlog
@@ -60,7 +60,7 @@ When closing the last `BL-##`, set feature **Status** → **Implemented** in the
 
 1. Interview: name, scope, priority, stakeholders, primary user need — must link ≥1 `GOL-##` or `SCN-##`
 2. Next `F##` from `features-list.md`
-3. Row in `features-list.md` with **User Requirements (brief)** and **Status** `Draft`
+3. Row in `features-list.md` with **Traces to**, **Summary**, and **Status** `Draft`
 4. Create `2-features/F##_slug.md` with **Overview** — set **Status** → `Specifying`
 5. Complete spec sections; when validation passes, set **Status** → `Dev-ready`
 6. Propagate: solution strategy ([04-solution-strategy.mdc](04-solution-strategy.mdc)) — pass ready gate — then building blocks, runtime flow; traceability, backlog, mockups/journeys if UI-heavy

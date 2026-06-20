@@ -44,7 +44,7 @@ For ID/traceability detail while checking, use [06-traceability.mdc](06-traceabi
 | Stakeholders & goals | `1-scope/stakeholders-and-goals.md` has ≥1 `STK-##`, ≥1 `GOL-##`; constraints/assumptions/non-goals reviewed |
 | Business scenarios | `1-scope/business-scenarios.md` has boundary table + ≥1 in-scope `SCN-##` (actor, trigger, goal, main flow) |
 | Glossary | Key domain terms in `1-scope/glossary.md` |
-| Features inventory | `1-scope/features-list.md` exists; every **Must** `GOL-##` and in-scope `SCN-##` maps to ≥1 `F##`; brief column reflects user-visible capability |
+| Features inventory | `1-scope/features-list.md` exists; every **Must** `GOL-##` and in-scope `SCN-##` maps to ≥1 `F##`; **Summary** reflects user-visible capability |
 | Coverage | No Must goal or in-scope scenario lacks a feature row; non-goals respected per [02-features-list.mdc](02-features-list.mdc) |
 
 **On fail:** `Q-S##` in **Scope** section.
@@ -58,10 +58,10 @@ For ID/traceability detail while checking, use [06-traceability.mdc](06-traceabi
 | Check | Pass when |
 |-------|-----------|
 | Files | Every **Must** `F##` in features-list has matching `2-features/F##_*.md` |
-| List sync | Frontmatter ID, **Status**, **Requires**, stakeholders ↔ features-list row |
-| Scope trace | Each Must spec has ≥1 `UR-F##-##` traced to `GOL-##` and/or `SCN-##` |
-| Brief ↔ UR | features-list **User Requirements (brief)** ↔ primary UR summary |
-| Dependencies | **Requires** synced across list, frontmatter, Overview, diagram; no cycles |
+| List sync | Frontmatter ID, **Status**, `requires` ↔ features-list row and dependency diagram |
+| Scope trace | Each Must spec has ≥1 `UR-F##-##` traced to `GOL-##` and/or `SCN-##`; **Traces to** links resolve |
+| Summary ↔ UR | features-list **Summary** ↔ primary UR / **Overview** intent |
+| Dependencies | **Requires** synced across frontmatter, Overview, dependency diagram; no cycles |
 
 **On fail:** `Q-F##-##` (Features section) or `Q-S##` if scope gap.
 

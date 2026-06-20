@@ -32,7 +32,7 @@ GOL → SCN → UR-F##-## → FR-F##-## → F## → BL-## → TC-##
 1. Every `UR` → ≥1 `GOL` or `SCN`
 2. Every `FR` → ≥1 `UR` (or `NFR` when Type is non-functional)
 3. Every user-facing feature → ≥1 UR and ≥1 FR
-4. `features-list` brief column ↔ primary UR summary
+4. `features-list` **Summary** ↔ feature **Overview** intent (primary UR once spec exists)
 5. UI/runtime flows reference `FR-F##-##`; backlog AC verifiable against FR
 6. Tests reference FR or UR they verify
 
@@ -52,7 +52,7 @@ NFR/ADR bidirectional links; Quality Goals → NFR; each `RT-##` lists BB + F##/
 |------|---------|
 | Direct deps only | **Requires** lists immediate prerequisites |
 | Hard gate | All **Requires** must be **Implemented** before feature **In development** |
-| Sync | Frontmatter `requires`, Overview **Requires**, table, diagram match |
+| Sync | Frontmatter `requires`, Overview **Requires**, dependency diagram match |
 | No cycles | Invalid — split or merge features |
 
 ## When to update traceability
@@ -60,6 +60,6 @@ NFR/ADR bidirectional links; Quality Goals → NFR; each `RT-##` lists BB + F##/
 | Change | Update |
 |--------|--------|
 | Goal/scenario | Feature UR; `traceability.md` |
-| UR/FR | `features-list` brief; backlog; `traceability.md` |
+| UR/FR | `features-list` **Summary**; backlog; `traceability.md` |
 | NFR/ADR | Features; `solution-strategy.md` per [04-solution-strategy.mdc](04-solution-strategy.mdc); `building-blocks.md`; `traceability.md` |
 | Backlog / test | `traceability.md` row; feature **Status** when backlog state changes |
