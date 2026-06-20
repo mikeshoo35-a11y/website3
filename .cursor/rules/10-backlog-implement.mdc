@@ -1,8 +1,6 @@
 ---
-description: Implement the next Todo backlog item (BL-##) into 6-code/; cancel with reason if blocked
-alwaysApply: true
+alwaysApply: false
 ---
-
 # Backlog implementation (6-code)
 
 When asked to implement the **next backlog item**, follow this workflow. **Do not start coding until pre-flight passes.**

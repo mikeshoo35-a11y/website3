@@ -1,6 +1,6 @@
 # Mockups
 
-SVG rules: [08-design-mockups](../.cursor/rules/08-design-mockups.mdc). Design tokens: [library.md](library.md).
+SVG rules: [08-design-mockups](../.cursor/rules/08-design-mockups.mdc). Design tokens: [library.md](library.md). Components: [design-strategy.md](design-strategy.md#component-inventory).
 
 | ID | Screen | File | Feature(s) | Journey | Route | Status |
 |----|--------|------|------------|---------|-------|--------|
@@ -21,7 +21,7 @@ SVG rules: [08-design-mockups](../.cursor/rules/08-design-mockups.mdc). Design t
 
 ## MCK-01: Site shell (header + footer) {#mck-01-site-shell}
 
-**Feature:** [F01-site-shell-layout](../2-features/F01-site-shell-layout.md) · **FR:** [FR-F01-01](../2-features/F01-site-shell-layout.md#fr-f01-01), [FR-F01-02](../2-features/F01-site-shell-layout.md#fr-f01-02), [FR-F01-06](../2-features/F01-site-shell-layout.md#fr-f01-06), [FR-F01-07](../2-features/F01-site-shell-layout.md#fr-f01-07) · **Components:** [CMP-01](library.md#cmp-01-site-header), [CMP-03](library.md#cmp-03-footer-frame), [CMP-08](library.md#cmp-08-external-link)
+**Feature:** [F01-site-shell-layout](../2-features/F01-site-shell-layout.md) · **FR:** [FR-F01-01](../2-features/F01-site-shell-layout.md#fr-f01-01), [FR-F01-02](../2-features/F01-site-shell-layout.md#fr-f01-02), [FR-F01-06](../2-features/F01-site-shell-layout.md#fr-f01-06), [FR-F01-07](../2-features/F01-site-shell-layout.md#fr-f01-07) · **Components:** [CMP-01](design-strategy.md#cmp-01-site-header), [CMP-03](design-strategy.md#cmp-03-footer-frame), [CMP-08](design-strategy.md#cmp-08-external-link)
 
 ![MCK-01 Site shell](mockups/screens/MCK-01-site-shell.svg)
 
@@ -33,7 +33,7 @@ SVG rules: [08-design-mockups](../.cursor/rules/08-design-mockups.mdc). Design t
 
 ## MCK-02: Mobile nav overlay {#mck-02-mobile-nav}
 
-**Feature:** [F01-site-shell-layout](../2-features/F01-site-shell-layout.md) · **FR:** [FR-F01-04](../2-features/F01-site-shell-layout.md#fr-f01-04) · **Components:** [CMP-02](library.md#cmp-02-mobile-nav-drawer)
+**Feature:** [F01-site-shell-layout](../2-features/F01-site-shell-layout.md) · **FR:** [FR-F01-04](../2-features/F01-site-shell-layout.md#fr-f01-04) · **Components:** [CMP-02](design-strategy.md#cmp-02-mobile-nav-drawer)
 
 ![MCK-02 Mobile nav](mockups/screens/MCK-02-mobile-nav.svg)
 
@@ -45,7 +45,7 @@ SVG rules: [08-design-mockups](../.cursor/rules/08-design-mockups.mdc). Design t
 
 ## MCK-03: Home — hero section {#mck-03-home-hero}
 
-**Feature:** [F02-home-page](../2-features/F02-home-page.md) · **FR:** [FR-F02-02](../2-features/F02-home-page.md#fr-f02-02), [FR-F02-03](../2-features/F02-home-page.md#fr-f02-03) · **Components:** [CMP-04](library.md#cmp-04-primary-button), [CMP-06](library.md#cmp-06-section-heading)
+**Feature:** [F02-home-page](../2-features/F02-home-page.md) · **FR:** [FR-F02-02](../2-features/F02-home-page.md#fr-f02-02), [FR-F02-03](../2-features/F02-home-page.md#fr-f02-03) · **Components:** [CMP-04](design-strategy.md#cmp-04-primary-button), [CMP-06](design-strategy.md#cmp-06-section-heading)
 
 ![MCK-03 Home hero](mockups/screens/MCK-03-home-hero.svg)
 
@@ -58,7 +58,7 @@ SVG rules: [08-design-mockups](../.cursor/rules/08-design-mockups.mdc). Design t
 
 ## MCK-04: Home — benefits grid {#mck-04-home-benefits}
 
-**Feature:** [F02-home-page](../2-features/F02-home-page.md) · **FR:** [FR-F02-04](../2-features/F02-home-page.md#fr-f02-04), [FR-F02-05](../2-features/F02-home-page.md#fr-f02-05), [FR-F02-09](../2-features/F02-home-page.md#fr-f02-09) · **Components:** [CMP-05](library.md#cmp-05-benefit-card), [CMP-06](library.md#cmp-06-section-heading)
+**Feature:** [F02-home-page](../2-features/F02-home-page.md) · **FR:** [FR-F02-04](../2-features/F02-home-page.md#fr-f02-04), [FR-F02-05](../2-features/F02-home-page.md#fr-f02-05), [FR-F02-09](../2-features/F02-home-page.md#fr-f02-09) · **Components:** [CMP-05](design-strategy.md#cmp-05-benefit-card), [CMP-06](design-strategy.md#cmp-06-section-heading)
 
 ![MCK-04 Home benefits](mockups/screens/MCK-04-home-benefits.svg)
 
@@ -71,7 +71,7 @@ SVG rules: [08-design-mockups](../.cursor/rules/08-design-mockups.mdc). Design t
 
 ## MCK-05: Home — how it works {#mck-05-home-how-it-works}
 
-**Feature:** [F02-home-page](../2-features/F02-home-page.md) · **FR:** [FR-F02-06](../2-features/F02-home-page.md#fr-f02-06) · **Components:** [CMP-06](library.md#cmp-06-section-heading)
+**Feature:** [F02-home-page](../2-features/F02-home-page.md) · **FR:** [FR-F02-06](../2-features/F02-home-page.md#fr-f02-06) · **Components:** [CMP-06](design-strategy.md#cmp-06-section-heading)
 
 ![MCK-05 Home how it works](mockups/screens/MCK-05-home-how-it-works.svg)
 
@@ -83,7 +83,7 @@ SVG rules: [08-design-mockups](../.cursor/rules/08-design-mockups.mdc). Design t
 
 ## MCK-06: Home — full page (desktop) {#mck-06-home-full-desktop}
 
-**Feature:** [F02-home-page](../2-features/F02-home-page.md) · **FR:** [FR-F02-01](../2-features/F02-home-page.md#fr-f02-01) · **Components:** [CMP-01](library.md#cmp-01-site-header), [CMP-03](library.md#cmp-03-footer-frame), [CMP-04](library.md#cmp-04-primary-button), [CMP-05](library.md#cmp-05-benefit-card), [CMP-07](library.md#cmp-07-text-link)
+**Feature:** [F02-home-page](../2-features/F02-home-page.md) · **FR:** [FR-F02-01](../2-features/F02-home-page.md#fr-f02-01) · **Components:** [CMP-01](design-strategy.md#cmp-01-site-header), [CMP-03](design-strategy.md#cmp-03-footer-frame), [CMP-04](design-strategy.md#cmp-04-primary-button), [CMP-05](design-strategy.md#cmp-05-benefit-card), [CMP-07](design-strategy.md#cmp-07-text-link)
 
 ![MCK-06 Home full desktop](mockups/screens/MCK-06-home-full-desktop.svg)
 
@@ -94,7 +94,7 @@ SVG rules: [08-design-mockups](../.cursor/rules/08-design-mockups.mdc). Design t
 
 ## MCK-07: Home — full page (mobile) {#mck-07-home-full-mobile}
 
-**Feature:** [F02-home-page](../2-features/F02-home-page.md) · **FR:** [FR-F02-01](../2-features/F02-home-page.md#fr-f02-01), [FR-F02-04](../2-features/F02-home-page.md#fr-f02-04) · **Components:** [CMP-01](library.md#cmp-01-site-header), [CMP-03](library.md#cmp-03-footer-frame)
+**Feature:** [F02-home-page](../2-features/F02-home-page.md) · **FR:** [FR-F02-01](../2-features/F02-home-page.md#fr-f02-01), [FR-F02-04](../2-features/F02-home-page.md#fr-f02-04) · **Components:** [CMP-01](design-strategy.md#cmp-01-site-header), [CMP-03](design-strategy.md#cmp-03-footer-frame)
 
 ![MCK-07 Home full mobile](mockups/screens/MCK-07-home-full-mobile.svg)
 
@@ -105,7 +105,7 @@ SVG rules: [08-design-mockups](../.cursor/rules/08-design-mockups.mdc). Design t
 
 ## MCK-08: About — page hero {#mck-08-about-hero}
 
-**Feature:** [F03-about-page](../2-features/F03-about-page.md) · **FR:** [FR-F03-02](../2-features/F03-about-page.md#fr-f03-02) · **Components:** [CMP-06](library.md#cmp-06-section-heading)
+**Feature:** [F03-about-page](../2-features/F03-about-page.md) · **FR:** [FR-F03-02](../2-features/F03-about-page.md#fr-f03-02) · **Components:** [CMP-06](design-strategy.md#cmp-06-section-heading)
 
 ![MCK-08 About hero](mockups/screens/MCK-08-about-hero.svg)
 
@@ -116,7 +116,7 @@ SVG rules: [08-design-mockups](../.cursor/rules/08-design-mockups.mdc). Design t
 
 ## MCK-09: About — methodology section {#mck-09-about-methodology}
 
-**Feature:** [F03-about-page](../2-features/F03-about-page.md) · **FR:** [FR-F03-03](../2-features/F03-about-page.md#fr-f03-03) · **Components:** [CMP-06](library.md#cmp-06-section-heading)
+**Feature:** [F03-about-page](../2-features/F03-about-page.md) · **FR:** [FR-F03-03](../2-features/F03-about-page.md#fr-f03-03) · **Components:** [CMP-06](design-strategy.md#cmp-06-section-heading)
 
 ![MCK-09 About methodology](mockups/screens/MCK-09-about-methodology.svg)
 
@@ -128,7 +128,7 @@ SVG rules: [08-design-mockups](../.cursor/rules/08-design-mockups.mdc). Design t
 
 ## MCK-10: About — site narrative {#mck-10-about-site-narrative}
 
-**Feature:** [F03-about-page](../2-features/F03-about-page.md) · **FR:** [FR-F03-04](../2-features/F03-about-page.md#fr-f03-04) · **Components:** [CMP-06](library.md#cmp-06-section-heading)
+**Feature:** [F03-about-page](../2-features/F03-about-page.md) · **FR:** [FR-F03-04](../2-features/F03-about-page.md#fr-f03-04) · **Components:** [CMP-06](design-strategy.md#cmp-06-section-heading)
 
 ![MCK-10 About site narrative](mockups/screens/MCK-10-about-site-narrative.svg)
 
@@ -139,7 +139,7 @@ SVG rules: [08-design-mockups](../.cursor/rules/08-design-mockups.mdc). Design t
 
 ## MCK-11: About — author section {#mck-11-about-author}
 
-**Feature:** [F03-about-page](../2-features/F03-about-page.md) · **FR:** [FR-F03-05](../2-features/F03-about-page.md#fr-f03-05), [FR-F03-06](../2-features/F03-about-page.md#fr-f03-06) · **Components:** [CMP-06](library.md#cmp-06-section-heading), [CMP-08](library.md#cmp-08-external-link)
+**Feature:** [F03-about-page](../2-features/F03-about-page.md) · **FR:** [FR-F03-05](../2-features/F03-about-page.md#fr-f03-05), [FR-F03-06](../2-features/F03-about-page.md#fr-f03-06) · **Components:** [CMP-06](design-strategy.md#cmp-06-section-heading), [CMP-08](design-strategy.md#cmp-08-external-link)
 
 ![MCK-11 About author](mockups/screens/MCK-11-about-author.svg)
 
@@ -152,7 +152,7 @@ SVG rules: [08-design-mockups](../.cursor/rules/08-design-mockups.mdc). Design t
 
 ## MCK-12: About — full page (desktop) {#mck-12-about-full-desktop}
 
-**Feature:** [F03-about-page](../2-features/F03-about-page.md) · **FR:** [FR-F03-01](../2-features/F03-about-page.md#fr-f03-01), [FR-F03-09](../2-features/F03-about-page.md#fr-f03-09) · **Components:** [CMP-01](library.md#cmp-01-site-header), [CMP-03](library.md#cmp-03-footer-frame), [CMP-07](library.md#cmp-07-text-link), [CMP-08](library.md#cmp-08-external-link)
+**Feature:** [F03-about-page](../2-features/F03-about-page.md) · **FR:** [FR-F03-01](../2-features/F03-about-page.md#fr-f03-01), [FR-F03-09](../2-features/F03-about-page.md#fr-f03-09) · **Components:** [CMP-01](design-strategy.md#cmp-01-site-header), [CMP-03](design-strategy.md#cmp-03-footer-frame), [CMP-07](design-strategy.md#cmp-07-text-link), [CMP-08](design-strategy.md#cmp-08-external-link)
 
 ![MCK-12 About full desktop](mockups/screens/MCK-12-about-full-desktop.svg)
 
@@ -163,7 +163,7 @@ SVG rules: [08-design-mockups](../.cursor/rules/08-design-mockups.mdc). Design t
 
 ## MCK-13: About — full page (mobile) {#mck-13-about-full-mobile}
 
-**Feature:** [F03-about-page](../2-features/F03-about-page.md) · **FR:** [FR-F03-01](../2-features/F03-about-page.md#fr-f03-01) · **Components:** [CMP-01](library.md#cmp-01-site-header), [CMP-03](library.md#cmp-03-footer-frame)
+**Feature:** [F03-about-page](../2-features/F03-about-page.md) · **FR:** [FR-F03-01](../2-features/F03-about-page.md#fr-f03-01) · **Components:** [CMP-01](design-strategy.md#cmp-01-site-header), [CMP-03](design-strategy.md#cmp-03-footer-frame)
 
 ![MCK-13 About full mobile](mockups/screens/MCK-13-about-full-mobile.svg)
 
@@ -174,7 +174,7 @@ SVG rules: [08-design-mockups](../.cursor/rules/08-design-mockups.mdc). Design t
 
 ## MCK-14: 404 not found {#mck-14-not-found}
 
-**Feature:** [F01-site-shell-layout](../2-features/F01-site-shell-layout.md) · **FR:** [FR-F01-08](../2-features/F01-site-shell-layout.md#fr-f01-08) · **Components:** [CMP-01](library.md#cmp-01-site-header), [CMP-03](library.md#cmp-03-footer-frame), [CMP-07](library.md#cmp-07-text-link)
+**Feature:** [F01-site-shell-layout](../2-features/F01-site-shell-layout.md) · **FR:** [FR-F01-08](../2-features/F01-site-shell-layout.md#fr-f01-08) · **Components:** [CMP-01](design-strategy.md#cmp-01-site-header), [CMP-03](design-strategy.md#cmp-03-footer-frame), [CMP-07](design-strategy.md#cmp-07-text-link)
 
 ![MCK-14 404](mockups/screens/MCK-14-not-found.svg)
 

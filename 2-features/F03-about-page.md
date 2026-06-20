@@ -1,7 +1,7 @@
 ---
 id: F03
 name: About page
-status: Specifying
+status: Dev-ready
 priority: Must
 stakeholders: [STK-01, STK-02, STK-03]
 scenarios: [SCN-01]

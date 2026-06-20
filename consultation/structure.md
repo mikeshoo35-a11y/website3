@@ -43,8 +43,10 @@ consultation/
 ├── 05-architecture-docs.mdc
 ├── 06-traceability.mdc
 ├── 08-backlog-implement.mdc
-├── 07-verification-validation-levels.mdc
-└── 10-design-mockups.mdc
+├── 08-design-mockups.mdc
+├── 09-verification-validation-levels.mdc
+├── 10-backlog-implement.mdc
+└── 11-design-strategy.mdc
 ```
 
 ### Product *(scaffolded per product)*
@@ -57,8 +59,8 @@ consultation/
 ├── 2-features/       F##_feature-slug.md (one per features-list row)
 ├── 3-arch/           solution-strategy.md, building-blocks.md,
 │                     runtime-views.md
-├── 4-design/         library.md, mockups.md, user-journeys.md,
-│                     db-and-dfd.md, mockups/
+├── 4-design/         design-strategy.md, library.md, mockups.md,
+│                     user-journeys.md, db-and-dfd.md, mockups/
 │                       screens/   MCK-##-*.svg
 │                       components/ CMP-##-*.svg (optional)
 ├── 5-dev/            backlog.md, testing-plan.md, traceability.md,
@@ -157,6 +159,7 @@ flowchart LR
   end
 
   subgraph design["4-design"]
+    DS["design-strategy"]
     LIB["library"]
     MCK["mockups + SVG"]
     JRN["user-journeys"]
@@ -170,7 +173,10 @@ flowchart LR
     UM["user-manual"]
   end
 
-  F -->|UI needs → mockups| MCK
+  F -->|UI needs → strategy| DS
+  SS -->|NFR/ADR → UI intent| DS
+  DS -->|screens → mockups| MCK
+  DS -->|tokens ref → library| LIB
   F -->|flows → journeys| JRN
   F -->|data needs → model| DFD
   F -->|scope → backlog| BL
@@ -312,22 +318,23 @@ Step-by-step guides for filling the product tree. Every step starts with an **in
 
 ### 6. Generate design documents from scope, features, and architecture
 
-**Goal:** `4-design/` — library, mockups, journeys, data model — traced to `F##`, `FR`, and `BB`.
+**Goal:** `4-design/` — design strategy, tokens, mockups, journeys, data model — traced to `F##`, `FR`, and `BB`.
 
-**Pre-flight:** solution strategy ready; `building-blocks.md` current ([10-design-mockups.mdc](../.cursor/rules/10-design-mockups.mdc)).
+**Pre-flight:** solution strategy ready; user-facing Must features have **UI flow** ([11-design-strategy.mdc](../.cursor/rules/11-design-strategy.mdc)).
 
 | Step | Action |
 |------|--------|
-| 1 | **library.md** — design tokens, screen inventory, component catalog (`CMP-##`) |
-| 2 | **mockups.md** — index row per screen (`MCK-##`) traced to `F##`, `FR`, and journey; add **Layout (planned)** before SVG |
-| 3 | Create SVGs under `mockups/screens/` (and optional `components/`, `journeys/`) per naming rules |
-| 4 | **user-journeys.md** — `JRN-##` steps linked to `MCK-##`; **Visual flow** storyboard |
-| 5 | **db-and-dfd.md** — entities from feature data models + BB stores; DFD aligned to runtime; data dictionary |
-| 6 | Wire feature **UI flow** → mockup anchors; propagate token changes across library, SVGs, journeys |
+| 1 | **design-strategy.md** — assumptions (`DSA-##`), UI intent, screen inventory (`MCK-##`), component catalog (`CMP-##` with What/Looks/Behaves) |
+| 2 | **library.md** — design tokens only; cite token names from component **Looks** in design-strategy |
+| 3 | **mockups.md** — index row per screen (`MCK-##`) traced to `F##`, `FR`, and journey; add **Layout (planned)** before SVG |
+| 4 | Create SVGs under `mockups/screens/` (and optional `components/`, `journeys/`) per naming rules |
+| 5 | **user-journeys.md** — `JRN-##` steps linked to `MCK-##`; **Visual flow** storyboard |
+| 6 | **db-and-dfd.md** — entities from feature data models + BB stores; DFD aligned to runtime; data dictionary |
+| 7 | Wire feature **UI flow** → mockup anchors; propagate changes across design-strategy, library, SVGs, journeys |
 
 **UI-heavy features first:** MVP paths on primary journeys; defer vNext screens until scope is active.
 
-**Rule:** [10-design-mockups.mdc](../.cursor/rules/10-design-mockups.mdc) · **Templates:** [library.md](templates.md#librarymd), [mockups.md](templates.md#mockupsmd), [user-journeys.md](templates.md#user-journeysmd), [db-and-dfd.md](templates.md#db-and-dfdmd)
+**Rules:** [11-design-strategy.mdc](../.cursor/rules/11-design-strategy.mdc), [08-design-mockups.mdc](../.cursor/rules/08-design-mockups.mdc) · **Templates:** [design-strategy.md](templates.md#design-strategymd), [library.md](templates.md#librarymd), [mockups.md](templates.md#mockupsmd), [user-journeys.md](templates.md#user-journeysmd), [db-and-dfd.md](templates.md#db-and-dfdmd)
 
 ### 7. Create a backlog for implementation
 

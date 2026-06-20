@@ -1,7 +1,7 @@
 ---
 id: F02
 name: Home page
-status: Specifying
+status: Dev-ready
 priority: Must
 stakeholders: [STK-01, STK-02]
 scenarios: [SCN-01, SCN-02]

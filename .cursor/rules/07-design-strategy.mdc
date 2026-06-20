@@ -1,0 +1,98 @@
+---
+description: Derive and maintain design-strategy.md — UI assumptions, intent, screen and component inventory for Level 7 V&V
+globs: 4-design/design-strategy.md,4-design/library.md,4-design/mockups.md,4-design/user-journeys.md,2-features/**
+alwaysApply: false
+---
+
+# Design Strategy
+
+Applies to `4-design/design-strategy.md`. Source of truth for **UI assumptions**, **UI intent**, **screen inventory** (`MCK-##`), and **component inventory** (`CMP-##`).
+
+**Templates:** [templates.md — design-strategy](../consultation/templates.md#design-strategymd) · **Tokens:** [library.md](../consultation/templates.md#librarymd) · **Mockups:** [08-design-mockups.mdc](08-design-mockups.mdc) · **V&V:** [09-verification-validation-levels.mdc](09-verification-validation-levels.mdc) Level 7
+
+## Gate — required before mockup SVGs
+
+Do **not** create or materially update `mockups.md` SVG assets, `user-journeys.md` **Visual flow**, or promote features to **Dev-ready** until **design strategy is ready** ([Ready checklist](#ready-checklist)).
+
+Stop and report using [Cancel response](#cancel-response) if the gate fails.
+
+## Prerequisites
+
+Create or regenerate only when:
+
+1. Interview completed and user confirmed ([01-interview.mdc](01-interview.mdc))
+2. [04-solution-strategy.mdc](04-solution-strategy.mdc) ready checklist passes
+3. Every user-facing **Must** `F##` has `F##_*.md` with **UI flow** (screens, transitions, key states/errors)
+
+Record gaps in `open-questions.md` (`Q-D##` / `Q-F##-##`), not in design-strategy prose.
+
+## Inputs (read order)
+
+| Order | Source | Use |
+|-------|--------|-----|
+| 1 | `stakeholders-and-goals.md` — **Constraints**, **Assumptions**, **Non-Goals** | Assumptions, tone, exclusions |
+| 2 | `solution-strategy.md` — **NFR-##**, **ADR-##** affecting UI | Platform, a11y, responsive, styling ADRs |
+| 3 | `features-list.md` + user-facing `F##_*.md` | Screens, flows, FR acceptance, states/errors |
+| 4 | Existing `design-strategy.md`, `library.md` | Preserve agreed decisions; extend only |
+
+Do not invent screens or components unsupported by feature **UI flow**, scope, or confirmed interview answers.
+
+## Derivation procedure
+
+| Step | Action |
+|------|--------|
+| 1 Assumptions | **Assumptions and agreements** — `DSA-##` rows from scope constraints, stakeholder goals, NFR/ADR UI impact |
+| 2 Intent | **UI intent** — 1–3 short paragraphs: visual direction, principles, tone; cite `GOL-##` / `NFR-##` |
+| 3 Screens | **Screen inventory** — one row per Must-path view (`MCK-##`); link `F##`, route, mockup anchor, journey |
+| 4 Components | **Component inventory** — `CMP-##` from UI flows; each section has **What**, **Looks**, **Behaves** |
+| 5 Patterns | **Layout patterns** (optional) — recurring compositions traced to `F##` |
+| 6 Tokens | Ensure `library.md` holds design tokens only; reference token names in **Looks** columns |
+| 7 Validate | [Ready checklist](#ready-checklist) |
+| 8 Propagate | `mockups.md` index, feature **UI flow** mockup links; remove resolved `Q-D##` rows |
+
+**Component IDs:** `CMP-01`… sequential; anchor slug `#cmp-01-kebab-slug`. Reuse IDs across the product — never renumber cancelled components in the same product.
+
+## Component section shape
+
+Every `CMP-##` entry must include:
+
+| Field | Content |
+|-------|---------|
+| **What** | Purpose, user need, where it appears |
+| **Looks** | Layout, typography, colours (cite `library.md` tokens), spacing, responsive layout |
+| **Behaves** | Interaction, states (default, hover, focus, open/closed, error), keyboard/a11y, breakpoints |
+
+Plus header line: **Used in:** `F##` · **Screens:** `MCK-##` (or `—` when cross-cutting)
+
+## Ready checklist
+
+Design strategy is **ready** when all pass:
+
+- [ ] All template sections present and filled (not placeholder-only)
+- [ ] **No open rows** blocking UI inventory in `open-questions.md` **Design** (`Q-D##`) for Must scope
+- [ ] **Assumptions and agreements** cover platform, language, theme, and contact/CTA constraints from scope
+- [ ] **UI intent** aligns with Must `GOL-##` and UI-related `NFR-##`
+- [ ] **Screen inventory** lists every Must-path view from feature **UI flow**; each row links valid `MCK-##` in `mockups.md` or `—` with stub note
+- [ ] **Component inventory** covers every `CMP-##` cited in screen inventory and feature UI flows; each has **What**, **Looks**, **Behaves**
+- [ ] `library.md` contains design tokens only (no duplicate component catalog)
+- [ ] User confirmed strategy in interview summary
+
+## When to update
+
+| Change | Update |
+|--------|--------|
+| Scope constraints / brand direction | Assumptions, UI intent |
+| New or changed Must feature UI flow | Screen inventory, components, patterns |
+| New `MCK-##` or `CMP-##` | design-strategy first, then mockups/library per [08-design-mockups.mdc](08-design-mockups.mdc) |
+| Token value change | `library.md`; propagate token refs in component **Looks** |
+
+After material design-strategy change, re-validate mockups and journeys in the same pass.
+
+## Cancel response
+
+```
+Cancelled: <target doc or task>
+Blocker: design-strategy
+Reason: <one sentence — e.g. F02 UI flow missing; screen inventory incomplete>
+Resolve: <complete ready checklist; see 11-design-strategy.mdc>
+```

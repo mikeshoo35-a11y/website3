@@ -8,7 +8,9 @@ alwaysApply: false
 
 Mockups (`MCK-##`) in `mockups.md`; journeys (`JRN-##`) in `user-journeys.md`.
 
-**Upstream first:** No new screen/SVG without trace to `F##`, `FR-F##-##`, and (when applicable) `JRN-##`. Update `mockups.md` and `library.md` before adding assets.
+**Upstream first:** No new screen/SVG without trace to `F##`, `FR-F##-##`, and (when applicable) `JRN-##`. Update `design-strategy.md`, `mockups.md`, and `library.md` before adding assets.
+
+**Design strategy gate:** Before creating mockup SVGs or journeys, pass [Ready checklist](11-design-strategy.mdc#ready-checklist) in [11-design-strategy.mdc](11-design-strategy.mdc).
 
 **Architecture gate:** Before creating or materially updating `db-and-dfd.md`, pass [Ready checklist](04-solution-strategy.mdc#ready-checklist) in [04-solution-strategy.mdc](04-solution-strategy.mdc) and ensure `building-blocks.md` is current.
 
@@ -16,7 +18,7 @@ Mockups (`MCK-##`) in `mockups.md`; journeys (`JRN-##`) in `user-journeys.md`.
 
 ```
 4-design/
-├── library.md, mockups.md, user-journeys.md
+├── design-strategy.md, library.md, mockups.md, user-journeys.md
 └── mockups/
     ├── screens/     MCK-##-kebab-slug.svg
     ├── journeys/    JRN-##-kebab-slug.svg (optional)
@@ -49,16 +51,17 @@ Mockups (`MCK-##`) in `mockups.md`; journeys (`JRN-##`) in `user-journeys.md`.
 | Each `MCK-##` section | `![…](mockups/screens/…svg)` + **Layout** bullets |
 | `user-journeys.md` | **Visual flow** — storyboard and/or step embeds |
 | Feature **UI flow** | Link to `../4-design/mockups.md#anchor` |
-| `library.md` | Screen inventory links |
+| `design-strategy.md` | Screen inventory and `CMP-##` catalog |
+| `library.md` | Design tokens only |
 
 Mermaid `journey` = satisfaction/emotion; SVG = layout/navigation. Use both.
 
 ## When to add or update
 
-1. Spec first — **Layout (planned)** and trace rows in `mockups.md`
+1. Spec first — **Layout (planned)** and trace rows in `mockups.md`; screen and components in `design-strategy.md`
 2. MVP paths on primary journeys first
 3. Defer vNext screens until scope active
-4. Propagate token/layout changes to `library.md`, SVGs, journeys, feature UI links in one pass
-5. New `MCK-##` row + `CMP-##` in `library.md` before creating SVG
+4. Propagate token/layout changes to `design-strategy.md`, `library.md`, SVGs, journeys, feature UI links in one pass
+5. New `MCK-##` row in screen inventory + `CMP-##` in component inventory before creating SVG
 
-Validate per [07-verification-validation-levels.mdc](07-verification-validation-levels.mdc) Levels 7–9.
+Validate per [09-verification-validation-levels.mdc](09-verification-validation-levels.mdc) Levels 7–9.

@@ -135,7 +135,8 @@ For ID/traceability detail while checking, use [06-traceability.mdc](06-traceabi
 | Check | Pass when |
 |-------|-----------|
 | Feature UI | User-facing Must features have **UI flow** (screens, transitions, key states/errors) |
-| Screen inventory | `4-design/library.md` screen inventory lists planned views for Must paths |
+| UI inventory | `4-design/design-strategy.md` has **Assumptions and agreements**, **UI intent**, **Screen inventory** (Must-path `MCK-##`), and **Component inventory** (`CMP-##` with What/Looks/Behaves) |
+| Design tokens | `4-design/library.md` holds design tokens only (no duplicate component catalog) |
 | Architecture UI | NFRs/ADRs cover platform, offline, accessibility, or nav constraints affecting UI |
 | Mockup index | `4-design/mockups.md` has **Layout (planned)** or spec rows for Must screens (`MCK-##` traced to `F##` / `FR`) |
 

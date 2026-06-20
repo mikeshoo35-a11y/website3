@@ -20,6 +20,7 @@ Sections marked **tbd** — required filenames in [structure.md](structure.md) a
   - [building-blocks.md](#building-blocksmd)
   - [runtime-views.md](#runtime-viewsmd)
 - [Solution](#solution)
+  - [design-strategy.md](#design-strategymd)
   - [library.md](#librarymd)
   - [mockups.md](#mockupsmd)
   - [user-journeys.md](#user-journeysmd)
@@ -587,28 +588,74 @@ Follow [05-architecture-docs](../.cursor/rules/05-architecture-docs.mdc). Per-fe
 
 <a id="4-design"></a>
 
+<a id="design-strategymd"></a>
+
+### design-strategy.md
+
+UI assumptions, intent, and inventory — source of truth for Level 7 V&V. Rule: [11-design-strategy](../.cursor/rules/11-design-strategy.mdc).
+
+```markdown
+# Design Strategy
+
+Assumptions, UI intent, screen inventory, and component catalog for {{product}}. Design tokens live in [library.md](library.md).
+
+## Assumptions and agreements
+
+| ID | Assumption / agreement | Source | Impact |
+|----|------------------------|--------|--------|
+| DSA-01 | {{e.g. English-only MVP; light corporate theme}} | [GOL-02](../1-scope/stakeholders-and-goals.md#gol-02-…), [NFR-01](../3-arch/solution-strategy.md#nfr-01-…) | {{what it constrains in UI}} |
+
+## UI intent
+
+{{1–3 paragraphs: visual direction, principles, tone — methodology-first, trust-focused, understated contact, etc. Cite Must goals and UI NFRs.}}
+
+## Screen inventory
+
+Every Must-path view from feature **UI flow**. Link mockup when `mockups.md` row exists; use `—` only with explicit stub note.
+
+| ID | Screen | Route | Feature(s) | Mockup | Journey |
+|----|--------|-------|------------|--------|---------|
+| MCK-01 | {{name}} | `/` or `*` | F01 | [MCK-01](mockups.md#mck-01-{{slug}}) | JRN-01 |
+
+## Component inventory {#component-inventory}
+
+Structured catalog — each component answers **What**, **Looks**, **Behaves**. IDs `CMP-01`…; anchors `#cmp-01-{{slug}}`.
+
+### CMP-01: {{Component Name}} {#cmp-01-{{slug}}}
+
+**Used in:** F01 · **Screens:** MCK-01, MCK-02
+
+| Aspect | Description |
+|--------|-------------|
+| **What** | {{purpose, user need, role in the layout}} |
+| **Looks** | {{layout, typography, colours — cite library tokens e.g. `--color-primary`, spacing, responsive rules}} |
+| **Behaves** | {{interaction, states, keyboard/a11y, breakpoints}} |
+
+## Layout patterns {#layout-patterns}
+
+| Pattern | Description | Feature |
+|---------|-------------|---------|
+| {{pattern name}} | {{when and how it composes components}} | F01 |
+```
+
+---
+
+<a id="librarymd"></a>
+
 ### library.md
+
+Design tokens only — screen and component inventory live in [design-strategy.md](design-strategy.md).
 
 ```markdown
 # Design Library
+
+Shared visual language for {{product}}. Component catalog: [design-strategy.md](design-strategy.md#component-inventory).
 
 ## Design Tokens
 
 | Token | Value | Usage |
 |-------|-------|-------|
 | {{--color-primary}} | {{#hex}} | {{usage}} |
-
-## Components
-
-### CMP-01: {{Component Name}}
-
-**Purpose:** {{what}} · **Used in:** F01 · **States:** default, disabled, error
-
-## Patterns
-
-| Pattern | Description | Feature |
-|---------|-------------|---------|
-| {{pattern}} | {{when}} | F01 |
 ```
 
 ---
@@ -617,7 +664,7 @@ Follow [05-architecture-docs](../.cursor/rules/05-architecture-docs.mdc). Per-fe
 
 ### mockups.md
 
-SVG rules: [10-design-mockups](../.cursor/rules/10-design-mockups.mdc).
+SVG rules: [08-design-mockups](../.cursor/rules/08-design-mockups.mdc). Design tokens: [library.md](library.md). Components: [design-strategy.md](design-strategy.md#component-inventory).
 
 ```markdown
 # Mockups
@@ -628,7 +675,7 @@ SVG rules: [10-design-mockups](../.cursor/rules/10-design-mockups.mdc).
 
 ## MCK-01: {{Screen Name}} {#{{anchor}}}
 
-**Feature:** [F01-{{slug}}](../2-features/F01-{{slug}}.md) · **Components:** [CMP-01](library.md#cmp-01-…)
+**Feature:** [F01-{{slug}}](../2-features/F01-{{slug}}.md) · **Components:** [CMP-01](design-strategy.md#cmp-01-…)
 
 ![MCK-01 {{name}}](mockups/screens/MCK-01-{{slug}}.svg)
 

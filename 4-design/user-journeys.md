@@ -25,6 +25,7 @@ End-to-end paths derived from [business scenarios](../1-scope/business-scenarios
 | Home only | Visitor leaves after step 5 | Partial SCN-01 — awareness achieved | [MCK-06](mockups.md#mck-06-home-full-desktop) |
 | Header nav to About | Visitor uses global About link instead of About band | Same as steps 6–7 via [RT-01](../3-arch/runtime-views.md#rt-01-practitioner-cross-route-journey) | [MCK-01](mockups.md#mck-01-site-shell) → [MCK-12](mockups.md#mck-12-about-full-desktop) |
 | Mobile nav | Narrow viewport — open hamburger, select route | Shell nav per [FR-F01-04](../2-features/F01-site-shell-layout.md#fr-f01-04) | [MCK-02](mockups.md#mck-02-mobile-nav) |
+| Unknown URL | Visitor opens invalid path (typo, stale bookmark, mistyped URL) | Not-found message inside shell; visitor may return to Home via **Back to Home** link per [FR-F01-08](../2-features/F01-site-shell-layout.md#fr-f01-08) | [MCK-14](mockups.md#mck-14-not-found) → [MCK-06](mockups.md#mck-06-home-full-desktop) |
 
 ### Visual flow
 
@@ -35,6 +36,7 @@ flowchart LR
     C --> D["How it works\nMCK-05"]
     D --> E["About optional\nMCK-12"]
     E --> F["About sections\nMCK-09–11"]
+    X["Invalid URL\nMCK-14"] --> Y["Back to Home\nMCK-06"]
 ```
 
 Journey storyboard SVG: — *(deferred; step table and mockup links are authoritative for MVP)*
@@ -122,7 +124,7 @@ Journey storyboard SVG: —
 
 | Feature UI flow | Journey(s) |
 |-----------------|------------|
-| F01 — shell, mobile nav, 404 | JRN-01 (shell, mobile alternate); 404 not on happy path — see [MCK-14](mockups.md#mck-14-not-found) |
+| F01 — shell, mobile nav, 404 | JRN-01 (shell, mobile alternate, unknown-URL alternate → [MCK-14](mockups.md#mck-14-not-found)) |
 | F02 — full Home flow | JRN-01, JRN-02, JRN-03 |
 | F03 — full About flow | JRN-01 (optional), JRN-02 (alternate), JRN-03 |
 | F04 — footer LinkedIn | JRN-03 |

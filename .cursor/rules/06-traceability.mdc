@@ -21,7 +21,7 @@ Bidirectional links — maintain in `5-dev/traceability.md` and source files.
 | `RT-##` | `runtime-views.md` |
 | `BL-##`, `TC-##` | `backlog.md`, `testing-plan.md` |
 | `Q-S##`, `Q-F##-##`, `Q-A##`, `Q-D##`, `Q-V##` | `open-questions.md` |
-| `MCK-##`, `JRN-##`, `CMP-##` | `mockups.md`, `user-journeys.md`, `library.md` |
+| `MCK-##`, `JRN-##`, `CMP-##`, `DSA-##` | `mockups.md`, `user-journeys.md`, `design-strategy.md` |
 
 ## Primary chain
 
