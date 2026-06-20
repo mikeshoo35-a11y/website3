@@ -1,7 +1,7 @@
 ---
 id: F04
 name: Optional LinkedIn contact
-status: Dev-ready
+status: Implemented
 priority: Should
 stakeholders: [STK-01, STK-03]
 scenarios: [SCN-03]

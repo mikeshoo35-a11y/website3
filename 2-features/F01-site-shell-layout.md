@@ -1,7 +1,7 @@
 ---
 id: F01
 name: Site shell & layout
-status: Dev-ready
+status: Implemented
 priority: Must
 stakeholders: [STK-01, STK-02, STK-03]
 scenarios: [SCN-01]

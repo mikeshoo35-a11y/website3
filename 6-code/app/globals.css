@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@custom-variant mobile (@media (width >= 768px));
+
+:root {
+  --color-primary: #0d9488;
+  --color-primary-hover: #0f766e;
+  --color-text: #1f2937;
+  --color-text-muted: #6b7280;
+  --color-surface: #fafaf9;
+  --color-surface-elevated: #ffffff;
+  --color-border: #e5e7eb;
+  --color-footer-bg: #f3f4f6;
+  --font-family: Inter, system-ui, sans-serif;
+  --font-size-h1: 2.25rem;
+  --font-size-h2: 1.5rem;
+  --font-size-body: 1rem;
+  --font-size-small: 0.875rem;
+  --spacing-section-y: 4rem;
+  --spacing-content-x: 1.5rem;
+  --max-width-content: 1200px;
+  --breakpoint-mobile: 768px;
+  --radius-card: 8px;
+  --radius-button: 6px;
+}
+
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-surface: var(--color-surface);
+  --color-surface-elevated: var(--color-surface-elevated);
+  --color-border: var(--color-border);
+  --color-footer-bg: var(--color-footer-bg);
+  --font-sans: var(--font-family);
+  --text-h1: var(--font-size-h1);
+  --text-h2: var(--font-size-h2);
+  --text-body: var(--font-size-body);
+  --text-small: var(--font-size-small);
+  --spacing-section-y: var(--spacing-section-y);
+  --spacing-content-x: var(--spacing-content-x);
+  --container-content: var(--max-width-content);
+  --radius-card: var(--radius-card);
+  --radius-button: var(--radius-button);
+  --breakpoint-mobile: 768px;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

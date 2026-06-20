@@ -3,45 +3,22 @@ alwaysApply: false
 ---
 # Backlog implementation (6-code)
 
-When asked to implement the **next backlog item**, follow this workflow. **Do not start coding until pre-flight passes.**
+When asked to implement the **next backlog item**, follow this workflow.
 
 ## 1. Pick the item
 
 1. Read [5-dev/backlog.md](../5-dev/backlog.md) — use **Suggested implementation order**; skip rows whose **Status** is not `Todo`.
 2. Take the first eligible `BL-##`. Note its **Dependencies**, **Traces to**, mockups, and acceptance criteria.
 
-## 2. Pre-flight — cancel if any blocker
-
-Stop immediately (no code, no partial scaffold) and report **BL id**, **blocker**, **why**, and **how to resolve**:
-
-| Blocker | Check | Resolve |
-|---------|-------|---------|
-| Missing `6-code/` | Folder absent and item is not **BL-01** | Resolve [Q-V01](../open-questions.md#q-v01): scaffold Android project under `6-code/` (Compose + Gradle per [solution-strategy](../3-arch/solution-strategy.md)), then retry |
-| Unmet dependency | Any listed `BL-##` dependency still `Todo` | Implement dependencies first (respect suggested order) |
-| Missing upstream | Cited feature (`2-features/F##-*.md`), `FR-…`, `BB-…`, or design refs (`MCK-…`, [db-and-dfd](../4-design/db-and-dfd.md)) missing or broken | Fix upstream docs or merge-back before coding |
-| Unresolved design gate | Open question cited in the BL entry with no documented stub/default (e.g. [Q-D01](../open-questions.md#q-d01) for BL-11, [Q-V04](../open-questions.md#q-v04)) | Resolve or document an MVP default in [open-questions.md](../open-questions.md), then retry |
-| Proposed ADR blocks build | Required ADR still `Proposed` with no stub allowed in BL notes | Accept ADR or add explicit MVP stub note to backlog item |
-
-Items marked **stub OK** in backlog (e.g. BL-09 parent gate) are **not** blockers.
-
-## 3. Implement
+## 2. Implement
 
 1. Read cited parents: feature file, [building-blocks](../3-arch/building-blocks.md), [runtime-views](../3-arch/runtime-views.md), linked mockups/journeys, [testing-plan](../5-dev/testing-plan.md) `TC-##` rows.
-2. Code under `6-code/` only — match ADRs (Compose, Room, offline-first, ad-free).
+2. Code under `6-code/` only — match ADRs.
 3. Satisfy every acceptance criterion checkbox; add tests mapped to linked `TC-##`.
 4. Run build/tests relevant to the item.
 
-## 4. Close out
+## 3. Close out
 
 1. Mark acceptance criteria done and set **Status** → `Done` in [backlog.md](../5-dev/backlog.md).
-2. Delete resolved rows from [open-questions.md](../open-questions.md) (per global rules).
-3. On commit (if requested): message cites `BL-##` and `FR-…` IDs.
+2. On commit (if requested): message cites `BL-##` and `FR-…` IDs.
 
-## Cancel response format
-
-```
-Cancelled: BL-##
-Blocker: <category>
-Reason: <one sentence>
-Resolve: <concrete next step>
-```
