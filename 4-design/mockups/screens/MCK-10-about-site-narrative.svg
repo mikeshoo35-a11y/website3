@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 280" role="img" aria-labelledby="title desc">
+<title id="title">About site narrative</title>
+<desc id="desc">Why this site exists section</desc>
+<rect width="1280" height="280" fill="#fafaf9"/>
+<text x="40" y="48" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="600" fill="#1f2937">Why this site exists</text>
+<text x="40" y="90" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#1f2937">This marketing site demonstrates enterprise-grade quality</text>
+<text x="40" y="110" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#6b7280">through its own delivery — layout, accessibility, and clarity.</text>
+</svg>

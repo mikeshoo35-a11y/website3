@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 480" role="img" aria-labelledby="title desc">
+<title id="title">Home how it works</title>
+<desc id="desc">Three numbered steps and About credibility band</desc>
+<rect width="1280" height="480" fill="#fafaf9"/>
+<text x="40" y="48" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="600" fill="#1f2937">How it works</text>
+<circle cx="56" cy="98" r="16" fill="#0d9488"/>
+<text x="52" y="103" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#ffffff">1</text>
+<text x="84" y="90" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#6b7280">Write structured text documentation</text>
+<circle cx="56" cy="158" r="16" fill="#0d9488"/>
+<text x="52" y="163" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#ffffff">2</text>
+<text x="84" y="150" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#6b7280">AI-assisted elaboration and validation</text>
+<circle cx="56" cy="218" r="16" fill="#0d9488"/>
+<text x="52" y="223" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#ffffff">3</text>
+<text x="84" y="210" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#6b7280">Implementation and automated tests</text>
+<rect x="40" y="300" width="1200" height="80" fill="#ffffff" stroke="#e5e7eb" rx="8"/>
+<text x="600" y="348" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#0d9488">Who built this? About the author</text>
+</svg>

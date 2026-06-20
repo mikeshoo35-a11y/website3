@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 280" role="img" aria-labelledby="title desc">
+<title id="title">About page hero</title>
+<desc id="desc">About page title and intro line</desc>
+<rect width="1280" height="280" fill="#fafaf9"/>
+<rect x="40" y="40" width="1200" height="200" fill="#ffffff" stroke="#e5e7eb" rx="8"/>
+<text x="80" y="110" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="600" fill="#1f2937">About AI Friendly Docs</text>
+<text x="80" y="150" font-family="Inter, system-ui, sans-serif" font-size="16" fill="#6b7280">Methodology, this site, and the author behind the approach</text>
+</svg>

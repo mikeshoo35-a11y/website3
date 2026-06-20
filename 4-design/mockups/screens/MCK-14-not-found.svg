@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+<title id="title">404 not found</title>
+<desc id="desc">Not found message inside site shell</desc>
+<rect width="1280" height="720" fill="#fafaf9"/>
+<rect width="1280" height="64" fill="#ffffff" stroke="#e5e7eb"/>
+<text x="40" y="40" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#1f2937">AI Friendly Docs</text>
+<text x="1080" y="40" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#0d9488">Home</text>
+<text x="1160" y="40" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#6b7280">About</text>
+<text x="640" y="340" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="600" fill="#1f2937">Page not found</text>
+<text x="640" y="380" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#6b7280">The page you requested does not exist.</text>
+<text x="640" y="420" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#0d9488">Back to Home</text>
+<rect x="0" y="656" width="1280" height="64" fill="#f3f4f6"/>
+<text x="40" y="696" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#6b7280">&#169; 2026 AI Friendly Docs</text>
+<text x="560" y="696" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#6b7280">Text-first docs for humans and AI</text>
+<text x="1160" y="696" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#0d9488">LinkedIn</text>
+</svg>

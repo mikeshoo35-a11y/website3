@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1100" role="img" aria-labelledby="title desc">
+<title id="title">About full page desktop</title>
+<desc id="desc">Complete About route with all sections</desc>
+<rect width="1280" height="1100" fill="#fafaf9"/>
+<rect width="1280" height="64" fill="#ffffff" stroke="#e5e7eb"/>
+<text x="40" y="40" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#1f2937">AI Friendly Docs</text>
+<text x="1080" y="40" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#6b7280">Home</text>
+<text x="1160" y="40" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#0d9488">About</text>
+<text x="80" y="120" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="600" fill="#1f2937">About AI Friendly Docs</text>
+<text x="80" y="152" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#6b7280">Methodology, this site, and the author</text>
+<text x="80" y="220" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="600" fill="#1f2937">What AI Friendly Docs is</text>
+<text x="80" y="250" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#1f2937">Text-first structured documentation...</text>
+<text x="80" y="360" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="600" fill="#1f2937">Why this site exists</text>
+<text x="80" y="390" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#1f2937">Quality demonstration through delivery...</text>
+<text x="80" y="500" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="600" fill="#1f2937">About the author</text>
+<text x="80" y="530" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#1f2937">Developer, BA, and system analyst...</text>
+<text x="80" y="600" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#0d9488">LinkedIn</text>
+<text x="600" y="680" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#0d9488">Back to overview</text>
+<rect x="0" y="1036" width="1280" height="64" fill="#f3f4f6"/>
+<text x="40" y="1076" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#6b7280">&#169; 2026 AI Friendly Docs</text>
+<text x="560" y="1076" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#6b7280">Text-first docs for humans and AI</text>
+<text x="1160" y="1076" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#0d9488">LinkedIn</text>
+</svg>

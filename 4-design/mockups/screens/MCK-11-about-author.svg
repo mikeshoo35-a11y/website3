@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" role="img" aria-labelledby="title desc">
+<title id="title">About author section</title>
+<desc id="desc">Author bio with subtle LinkedIn link and back link</desc>
+<rect width="1280" height="360" fill="#fafaf9"/>
+<text x="40" y="48" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="600" fill="#1f2937">About the author</text>
+<text x="40" y="90" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#1f2937">Developer, business analyst, and system analyst background.</text>
+<text x="40" y="110" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#6b7280">Builds documentation practices that teams and agents can trust.</text>
+<text x="40" y="180" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#0d9488">LinkedIn profile</text>
+<rect x="40" y="240" width="1200" height="60" fill="#ffffff" stroke="#e5e7eb" rx="8"/>
+<text x="600" y="278" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#0d9488">Back to overview</text>
+</svg>

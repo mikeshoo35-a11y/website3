@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1400" role="img" aria-labelledby="title desc">
+<title id="title">Home full page desktop</title>
+<desc id="desc">Complete Home route with shell and all sections</desc>
+<rect width="1280" height="1400" fill="#fafaf9"/>
+<rect width="1280" height="64" fill="#ffffff" stroke="#e5e7eb"/>
+<text x="40" y="40" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#1f2937">AI Friendly Docs</text>
+<text x="1080" y="40" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#0d9488">Home</text>
+<text x="1160" y="40" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#6b7280">About</text>
+<text x="640" y="130" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="600" fill="#1f2937">Documentation built for humans and AI</text>
+<text x="640" y="168" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#6b7280">Structured text-first docs for practitioners</text>
+<rect x="540" y="190" width="200" height="40" fill="#0d9488" rx="6"/>
+<text x="640" y="216" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#ffffff">Explore benefits</text>
+<text x="40" y="300" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="600" fill="#1f2937">Benefits</text>
+<rect x="40" y="320" width="580" height="140" fill="#ffffff" stroke="#e5e7eb" rx="8"/>
+<rect x="56" y="336" width="32" height="32" fill="#fafaf9" stroke="#e5e7eb" rx="4"/>
+<text x="56" y="384" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#6b7280">Rapid docs</text>
+<text x="56" y="401" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#6b7280">Short description blurb for this benefit.</text>
+<rect x="660" y="320" width="580" height="140" fill="#ffffff" stroke="#e5e7eb" rx="8"/>
+<rect x="676" y="336" width="32" height="32" fill="#fafaf9" stroke="#e5e7eb" rx="4"/>
+<text x="676" y="384" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#6b7280">Test coverage</text>
+<text x="676" y="401" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#6b7280">Short description blurb for this benefit.</text>
+<rect x="40" y="480" width="580" height="140" fill="#ffffff" stroke="#e5e7eb" rx="8"/>
+<rect x="56" y="496" width="32" height="32" fill="#fafaf9" stroke="#e5e7eb" rx="4"/>
+<text x="56" y="544" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#6b7280">Quality</text>
+<text x="56" y="561" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#6b7280">Short description blurb for this benefit.</text>
+<rect x="660" y="480" width="580" height="140" fill="#ffffff" stroke="#e5e7eb" rx="8"/>
+<rect x="676" y="496" width="32" height="32" fill="#fafaf9" stroke="#e5e7eb" rx="4"/>
+<text x="676" y="544" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#6b7280">Legacy modernization</text>
+<text x="676" y="561" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#6b7280">Short description blurb for this benefit.</text>
+<text x="40" y="680" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="600" fill="#1f2937">How it works</text>
+<circle cx="56" cy="718" r="16" fill="#0d9488"/>
+<text x="52" y="723" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#ffffff">1</text>
+<text x="84" y="710" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#6b7280">Structured text docs</text>
+<circle cx="56" cy="768" r="16" fill="#0d9488"/>
+<text x="52" y="773" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#ffffff">2</text>
+<text x="84" y="760" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#6b7280">AI elaboration</text>
+<circle cx="56" cy="818" r="16" fill="#0d9488"/>
+<text x="52" y="823" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#ffffff">3</text>
+<text x="84" y="810" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#6b7280">Implementation and tests</text>
+<rect x="40" y="900" width="1200" height="60" fill="#ffffff" stroke="#e5e7eb" rx="8"/>
+<text x="640" y="938" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#0d9488">Who built this?</text>
+<rect x="0" y="1336" width="1280" height="64" fill="#f3f4f6"/>
+<text x="40" y="1376" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#6b7280">&#169; 2026 AI Friendly Docs</text>
+<text x="560" y="1376" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#6b7280">Text-first docs for humans and AI</text>
+<text x="1160" y="1376" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#0d9488">LinkedIn</text>
+</svg>
