@@ -1,0 +1,26 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE (keep .cursor/rules — project config)
+.idea/
+*.iml
+.vscode/
+*.swp
+*~
+
+# Android / Gradle (6-code/)
+.gradle/
+build/
+local.properties
+*.apk
+*.aab
+.cxx/
+captures/
+.externalNativeBuild/
+
+# Logs and temp
+*.log
+*.tmp
+.cache/

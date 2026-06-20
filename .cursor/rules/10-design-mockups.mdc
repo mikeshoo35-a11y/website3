@@ -1,0 +1,64 @@
+---
+description: Design mockups, SVG assets, and wiring into docs
+globs: 4-design/**
+alwaysApply: false
+---
+
+# Design Mockups and SVG Assets
+
+Mockups (`MCK-##`) in `mockups.md`; journeys (`JRN-##`) in `user-journeys.md`.
+
+**Upstream first:** No new screen/SVG without trace to `F##`, `FR-F##-##`, and (when applicable) `JRN-##`. Update `mockups.md` and `library.md` before adding assets.
+
+**Architecture gate:** Before creating or materially updating `db-and-dfd.md`, pass [Ready checklist](04-solution-strategy.mdc#ready-checklist) in [04-solution-strategy.mdc](04-solution-strategy.mdc) and ensure `building-blocks.md` is current.
+
+## Asset layout
+
+```
+4-design/
+├── library.md, mockups.md, user-journeys.md
+└── mockups/
+    ├── screens/     MCK-##-kebab-slug.svg
+    ├── journeys/    JRN-##-kebab-slug.svg (optional)
+    └── components/  CMP-##-kebab-slug.svg (optional)
+```
+
+## Naming
+
+- Filename starts with `MCK-##` / `JRN-##` / `CMP-##`; kebab slug matches `mockups.md` anchor
+- One canonical SVG per `MCK-##` unless explicit variant (e.g. `-phone`)
+- No orphans — every asset has index row + markdown section
+
+## SVG authoring
+
+| Rule | Requirement |
+|------|-------------|
+| XML | `<?xml version="1.0" encoding="UTF-8"?>` first line |
+| Root | `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 W H">` — reuse frame (e.g. 360×780) |
+| Non-ASCII | XML numeric entities (e.g. `&#1041;`) |
+| No emoji | Shapes or ASCII in `<text>` |
+| Escapes | `&` → `&amp;`, `<` → `&lt;` in text nodes |
+| Tokens | Match `library.md` |
+| A11y | `<title>`, `<desc>`, `role="img"`, `aria-labelledby` when appropriate |
+
+## Wiring
+
+| Location | Add |
+|----------|-----|
+| `mockups.md` index | **File** column link to SVG |
+| Each `MCK-##` section | `![…](mockups/screens/…svg)` + **Layout** bullets |
+| `user-journeys.md` | **Visual flow** — storyboard and/or step embeds |
+| Feature **UI flow** | Link to `../4-design/mockups.md#anchor` |
+| `library.md` | Screen inventory links |
+
+Mermaid `journey` = satisfaction/emotion; SVG = layout/navigation. Use both.
+
+## When to add or update
+
+1. Spec first — **Layout (planned)** and trace rows in `mockups.md`
+2. MVP paths on primary journeys first
+3. Defer vNext screens until scope active
+4. Propagate token/layout changes to `library.md`, SVGs, journeys, feature UI links in one pass
+5. New `MCK-##` row + `CMP-##` in `library.md` before creating SVG
+
+Validate per [09-validation-open-questions.mdc](09-validation-open-questions.mdc) mockup items.

@@ -1,0 +1,32 @@
+---
+description: Consult consultation templates, rules, and structure before editing product docs
+alwaysApply: true
+---
+
+
+## Framework consultation — read-only
+
+The `consultation/` folder holds **framework meta-docs**, not product documentation. It describes how to document products; do not treat it as the product tree.
+
+
+
+## Do not edit consultation files
+
+**Do not create, modify, or delete files under `consultation/`** unless the user **explicitly** asks to change that folder (e.g. “update `consultation/structure.md`”, “edit templates.md in consultation”).
+
+When unsure whether a request targets consultation vs product docs, ask before editing.
+
+
+## Read 
+[structure.md](../consultation/structure.md)
+
+
+
+## Before updating any product file
+
+Read [templates.md](../consultation/templates.md) for the target file shape and this file for layout. Match the template shape, required sections, and ID conventions before writing.
+
+
+
+## When writing some text to the chat
+Be precise. Don't put long texts - 1 screen max.

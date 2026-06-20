@@ -1,0 +1,130 @@
+---
+description: Generate and reconcile features-list from stakeholders, goals, and business scenarios
+globs: 1-scope/**/*.md,2-features/**
+alwaysApply: false
+---
+
+# Features List Generation
+
+Derive `1-scope/features-list.md` from upstream scope docs — do not invent features unsupported by [stakeholders-and-goals.md](../1-scope/stakeholders-and-goals.md) or [business-scenarios.md](../1-scope/business-scenarios.md).
+
+**Preserve specced features:** rows whose **File** link resolves to an existing `2-features/F##_*.md` are **read-only** in `features-list.md` during generation and reconcile. Scope changes may **add** new rows only; they do not rewrite, re-prioritize, or remove established rows unless the user explicitly requests change via interview ([03-feature-lifecycle.mdc](03-feature-lifecycle.mdc) rename/remove flow).
+
+**Templates:** [features-list.md](../consultation/templates.md#features-listmd) · **Lifecycle:** [03-feature-lifecycle.mdc](03-feature-lifecycle.mdc) · **Traceability:** [06-traceability.mdc](06-traceability.mdc)
+
+## Prerequisites
+
+Generate or regenerate the features list only when:
+
+1. Interview completed and user confirmed ([01-interview.mdc](01-interview.mdc))
+2. `stakeholders-and-goals.md` has at least one `STK-##` and one `GOL-##`
+3. `business-scenarios.md` has at least one `SCN-##`
+
+If scope docs are incomplete, finish or stub them first; record gaps in root `open-questions.md` (`Q-S##`).
+
+## Inputs (read order)
+
+| Order | Source | Use |
+|-------|--------|-----|
+| 1 | `stakeholders-and-goals.md` — **Goals** | Candidate features, **Priority**, **Stakeholders**, **User Requirements (brief)** |
+| 2 | `stakeholders-and-goals.md` — **Non-Goals**, **Constraints** | Exclude rows; note in **Summary** when scope is narrowed |
+| 3 | `business-scenarios.md` — **Scenarios** | Feature boundaries, actor/trigger/outcome, **Requires** order |
+| 4 | `business-scenarios.md` — **Context and Boundary** | In-scope actors/systems only |
+| 5 | Existing `features-list.md` + `2-features/F##_*.md` | **Preserve** every row with a matching spec file unchanged; append new rows only |
+
+## Preserve existing features
+
+A feature is **established** when `2-features/F##_*.md` exists for that list row.
+
+| Established feature | During generate / reconcile |
+|---------------------|----------------------------|
+| Row in `features-list.md` | Copy verbatim — all columns (**ID**, **Name**, **File**, **Priority**, **Status**, **Stakeholders**, **User Requirements (brief)**, **Requires**, **Summary**) |
+| **Requires** edges in **Dependencies** diagram | Keep existing edges; add edges only for **new** `F##` rows |
+| Linked `F##_*.md` | Do not edit as part of features-list generation — update only when user requests spec work |
+
+**Add-only on scope change:** when `GOL-##`, `SCN-##`, boundaries, or other `1-scope/` docs change, derive **new** candidate rows for capabilities not yet covered by an established feature. Assign the next `F##`; set **Status** `Draft`.
+
+**Draft-only rows** (list row with no `F##_*.md` yet) may still be edited or removed during reconcile before a spec file is created.
+
+**Remove or rewrite** an established feature only through explicit interview confirmation per [Renaming or removing a feature](03-feature-lifecycle.mdc#renaming-or-removing-a-feature) — never as an automatic reconcile step.
+
+## Derivation rules
+
+Apply below when drafting **new** rows only — not when copying established features ([Preserve existing features](#preserve-existing-features)).
+
+### One row per deliverable capability
+
+Add one `F##` row when a goal or scenario implies a **distinct user-visible or testable capability** the product must provide.
+
+| Signal | Action |
+|--------|--------|
+| `SCN-##` names a coherent end-to-end outcome | ≥1 feature row; prefer one feature when the scenario is a single user journey |
+| `GOL-##` spans multiple independent outcomes | Split into multiple features |
+| Multiple `SCN-##` share the same capability | One feature row; list all related scenarios in the feature spec later |
+| Scenario step is setup/admin only | Merge into the consuming feature unless explicitly a separate Must goal |
+| **Non-Goals** or out-of-boundary actor | No row — do not register |
+
+### Column mapping
+
+| Column | Derive from |
+|--------|-------------|
+| **ID** | Next `F##` (zero-padded); never reuse cancelled IDs in the same product |
+| **Name** | Short capability name from scenario title or goal (verb + object) |
+| **File** | `[F##_slug](2-features/F##_slug.md)` — kebab slug from **Name** |
+| **Priority** | Highest linked `GOL-##` priority (`Must` / `Should` / `Could`); scenario-only → `Should` unless interview says Must |
+| **Status** | `Draft` for new rows only; never change **Status** on established features during generate / reconcile |
+| **Stakeholders** | `STK-##` from linked goals; primary scenario **Actor** when no goal link yet |
+| **User Requirements (brief)** | One line: `{{Actor}} can {{need}} so that {{benefit}}` from scenario **Goal** or goal **Success Metric** |
+| **Requires** | Direct prerequisite `F##` only — when scenario B cannot start until scenario A's outcome exists, or goal map / interview confirms order |
+| **Summary** | One sentence: what the feature delivers and primary `SCN-##` / `GOL-##` |
+
+Every row must trace to ≥1 `GOL-##` or `SCN-##`. Record both in the feature spec **Overview** when creating `F##_*.md`.
+
+### Dependencies diagram
+
+After the table, build **Dependencies** Mermaid from **Requires** only:
+
+- One directed edge per **Requires** (`F01 --> F02`)
+- Direct deps only; no transitive edges; no cycles
+- On reconcile: retain all edges between established features; append edges for new rows
+- Empty section → omit diagram or note `*(none)*`
+
+## Procedure
+
+### Initial generation (no features list yet)
+
+1. Read goals and scenarios per **Inputs**
+2. Draft candidate rows using **Derivation rules**
+3. Present proposed table + dependency diagram in interview summary
+4. On user confirm: write `features-list.md`; set all rows **Status** `Draft`
+5. Update `business-scenarios.md` **Related features** on each `SCN-##`
+6. Update `stakeholders-and-goals.md` **Goal map** with `F##` nodes where applicable
+7. Do **not** create `F##_*.md` until user asks to specify — unless interview explicitly includes spec work ([03-feature-lifecycle.mdc](03-feature-lifecycle.mdc))
+
+### Reconcile (scope changed)
+
+When `GOL-##`, `SCN-##`, boundaries, or other `1-scope/` docs change:
+
+1. **Preserve** every established feature row and its **Requires** edges unchanged
+2. Identify goals/scenarios/capabilities not yet covered by an established `F##`
+3. **Append** new rows for those capabilities using **Derivation rules**; set **Status** `Draft`
+4. Extend **Dependencies** diagram with edges for new rows only
+5. Update `business-scenarios.md` **Related features** and `stakeholders-and-goals.md` **Goal map** for **new** links only
+6. Do **not** auto-cancel, rewrite, or re-prioritize established features — flag mismatches in interview summary and `open-questions.md` (`Q-S##` / `Q-F##-##`) instead
+
+Removing or materially changing an established feature requires explicit interview confirmation ([03-feature-lifecycle.mdc](03-feature-lifecycle.mdc)).
+
+## Validation
+
+Before finishing, verify per [09-validation-open-questions.mdc](09-validation-open-questions.mdc):
+
+- [ ] Established feature rows unchanged unless user explicitly requested edit
+- [ ] New rows added only for scope capabilities not covered by established `F##`
+- [ ] Every **new** `F##` row cites ≥1 `GOL-##` or `SCN-##` (in **Summary** or linked spec **Overview**)
+- [ ] Every Must `GOL-##` and every in-scope `SCN-##` maps to ≥1 `F##` (established or new)
+- [ ] **User Requirements (brief)** aligns with primary UR intent (once spec exists)
+- [ ] **Requires** ↔ dependency diagram ↔ feature frontmatter (once spec exists)
+- [ ] **Related features** on scenarios resolve to features-list rows
+- [ ] No feature contradicts **Non-Goals** or boundary **Out** actors
+
+Unresolved mapping → `open-questions.md` (`Q-S##` or `Q-F##-##`), not silent omission.
