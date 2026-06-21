@@ -4,8 +4,9 @@
 # Ignore everything at repository root
 /*
 
-# Keep root gitignore and numbered folders
+# Keep root gitignore, readme, and numbered folders
 !.gitignore
+!README.md
 !1-scope/
 !2-features/
 !3-arch/
