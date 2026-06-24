@@ -21,6 +21,8 @@
 
 # production
 /build
+/generated
+/public/product-docs
 
 # misc
 .DS_Store

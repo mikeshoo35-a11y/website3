@@ -9,6 +9,7 @@ import { MobileNavDrawer, MOBILE_NAV_DRAWER_ID } from "./mobile-nav-drawer";
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
+  { href: "/docs", label: "Docs" },
 ] as const;
 
 function isActivePath(pathname: string, href: string): boolean {
@@ -21,8 +22,8 @@ function isActivePath(pathname: string, href: string): boolean {
 function navLinkClassName(isActive: boolean): string {
   return `rounded-sm px-3 py-2 text-small transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
     isActive
-      ? "font-medium text-primary"
-      : "text-text-muted hover:text-primary"
+      ? "font-semibold text-text underline decoration-primary decoration-2 underline-offset-4"
+      : "text-text hover:text-primary-hover"
   }`;
 }
 

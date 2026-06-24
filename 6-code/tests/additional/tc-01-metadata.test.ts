@@ -9,6 +9,7 @@ describe("TC-01: Shared metadata title template", () => {
   it.each([
     ["home", "Home"],
     ["about", "About"],
+    ["docs", "Docs"],
     ["not-found", "Page not found"],
   ] as const)("produces a distinct title for %s", (routeKey, segment) => {
     const title = createPageTitle(routeKey);
@@ -20,7 +21,7 @@ describe("TC-01: Shared metadata title template", () => {
   });
 
   it("returns non-empty metadata titles for all route keys", () => {
-    for (const routeKey of ["home", "about", "not-found"] as const) {
+    for (const routeKey of ["home", "about", "docs", "not-found"] as const) {
       const metadata = createPageMetadata(routeKey);
       const title =
         typeof metadata.title === "object" && metadata.title !== null

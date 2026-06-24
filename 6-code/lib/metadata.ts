@@ -16,11 +16,12 @@ export function getSiteUrl(): URL {
   return new URL("http://localhost:3000");
 }
 
-export type RouteKey = "home" | "about" | "not-found";
+export type RouteKey = "home" | "about" | "docs" | "not-found";
 
 const ROUTE_LABELS: Record<RouteKey, string> = {
   home: "Home",
   about: "About",
+  docs: "Docs",
   "not-found": "Page not found",
 };
 

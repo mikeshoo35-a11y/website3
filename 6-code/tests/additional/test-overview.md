@@ -23,8 +23,9 @@ E2E runs against a production build (`npm run build && npm run start`) on `http:
 
 | TC | File | Backlog | Verifies |
 |----|------|---------|----------|
-| TC-01 | [tc-01-metadata.test.ts](tc-01-metadata.test.ts) | BL-02, BL-03, BL-04 | Shared page title template (`createPageTitle`, `createPageMetadata`) |
+| TC-01 | [tc-01-metadata.test.ts](tc-01-metadata.test.ts) | BL-02, BL-03, BL-04, BL-08 | Shared page title template (`createPageTitle`, `createPageMetadata`) |
 | TC-18 | [tc-18-scaffold.test.ts](tc-18-scaffold.test.ts) | BL-01 | Clean `npm run build`, static architecture (no API/DB/CMS), Tailwind tokens |
+| TC-19 | [tc-19-doc-index.test.ts](tc-19-doc-index.test.ts) | BL-07 | Build-time doc index scope, content, and SVG staging |
 
 ---
 
@@ -45,7 +46,13 @@ E2E runs against a production build (`npm run build && npm run start`) on `http:
 | TC-12 | [e2e/tc-12-about-sections.spec.ts](e2e/tc-12-about-sections.spec.ts) | BL-04 | About section order and content |
 | TC-13 | [e2e/tc-13-about-linkedin.spec.ts](e2e/tc-13-about-linkedin.spec.ts) | BL-04 | Author LinkedIn link security attributes |
 | TC-14 | [e2e/tc-14-footer-linkedin.spec.ts](e2e/tc-14-footer-linkedin.spec.ts) | BL-05 | Footer LinkedIn on all shell routes |
+| TC-15 | [e2e/tc-15-lighthouse-docs.spec.ts](e2e/tc-15-lighthouse-docs.spec.ts) | BL-06, BL-10 | Mobile Lighthouse ≥ 90 on `/docs` |
+| TC-16 | [e2e/tc-16-docs-a11y.spec.ts](e2e/tc-16-docs-a11y.spec.ts) | BL-10 | axe + keyboard on Docs tree, pane, and nav |
 | TC-17 | [e2e/tc-17-journey.spec.ts](e2e/tc-17-journey.spec.ts) | BL-06 | SCN-01 cross-route journey smoke |
+| TC-20 | [e2e/tc-20-docs-rendering.spec.ts](e2e/tc-20-docs-rendering.spec.ts) | BL-08 | Docs split-pane, markdown, Mermaid, SVG |
+| TC-21 | [e2e/tc-21-docs-links.spec.ts](e2e/tc-21-docs-links.spec.ts) | BL-08 | In-viewer relative links; external link security |
+| TC-22 | [e2e/tc-22-docs-nav.spec.ts](e2e/tc-22-docs-nav.spec.ts) | BL-09 | Docs nav link and active state |
+| RT-04 | [e2e/tc-24-docs-journey.spec.ts](e2e/tc-24-docs-journey.spec.ts) | BL-10 | SCN-04 documentation browser journey |
 
 ---
 
@@ -53,7 +60,7 @@ E2E runs against a production build (`npm run build && npm run start`) on `http:
 
 | TC | Type | Notes |
 |----|------|-------|
-| TC-15 | Lighthouse | Mobile audit on `/` and `/about` — Performance, Accessibility, SEO ≥ 90 |
-| TC-16 | axe + keyboard | WCAG 2.1 AA walkthrough on Home and About |
+| TC-15 | Lighthouse | Mobile audit on `/` and `/about` — Performance, Accessibility, SEO ≥ 90 (Home/About portion; `/docs` automated above) |
+| TC-16 | axe + keyboard | WCAG 2.1 AA walkthrough on Home and About (Docs portion automated above) |
 
 See [testing-plan.md](../../5-dev/testing-plan.md) for full steps and traceability.

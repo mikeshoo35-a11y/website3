@@ -72,8 +72,8 @@ export function MobileNavDrawer({
               aria-current={link.isActive ? "page" : undefined}
               className={`border-b border-border px-content-x py-4 text-body transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary ${
                 link.isActive
-                  ? "font-medium text-primary"
-                  : "text-text hover:text-primary"
+                  ? "font-semibold text-text underline decoration-primary decoration-2 underline-offset-4"
+                  : "text-text hover:text-primary-hover"
               }`}
             >
               {link.label}

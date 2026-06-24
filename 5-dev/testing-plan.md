@@ -19,7 +19,7 @@ Test strategy per [ADR-05](../3-arch/solution-strategy.md#adr-05-playwright-and-
 | TC-13 | E2E | About author LinkedIn link security | [FR-F03-06](../2-features/F03-about-page.md#fr-f03-06), [NFR-05](../3-arch/solution-strategy.md#nfr-05-external-link-security) | BL-04 |
 | TC-14 | E2E | Footer LinkedIn contact | [FR-F04-01](../2-features/F04-optional-linkedin-contact.md#fr-f04-01)–[FR-F04-07](../2-features/F04-optional-linkedin-contact.md#fr-f04-07) | BL-05 |
 | TC-15 | Manual | Lighthouse mobile ≥ 90 on Home, About, and Docs | [NFR-03](../3-arch/solution-strategy.md#nfr-03-performance-seo) | BL-06, BL-10 |
-| TC-16 | Manual | WCAG 2.1 AA — axe and keyboard walkthrough | [NFR-02](../3-arch/solution-strategy.md#nfr-02-accessibility) | BL-06 |
+| TC-16 | Manual | WCAG 2.1 AA — axe and keyboard walkthrough | [NFR-02](../3-arch/solution-strategy.md#nfr-02-accessibility) | BL-06, BL-10 |
 | TC-17 | E2E | Practitioner cross-route journey smoke | [RT-01](../3-arch/runtime-views.md#rt-01-practitioner-cross-route-journey), [SCN-01](../1-scope/business-scenarios.md#scn-01-practitioner-discovers) | BL-06 |
 | TC-18 | Build | Project scaffold build succeeds | [ADR-01](../3-arch/solution-strategy.md#adr-01-nextjs-app-router-with-ssg-on-vercel), [NFR-04](../3-arch/solution-strategy.md#nfr-04-static-architecture) | BL-01 |
 | TC-19 | Build | Product doc index generation | [FR-F05-11](../2-features/F05-documentation-browser.md#fr-f05-11), [ADR-06](../3-arch/solution-strategy.md#adr-06-build-time-product-doc-browser) | BL-07 |
@@ -256,34 +256,34 @@ Test strategy per [ADR-05](../3-arch/solution-strategy.md#adr-05-playwright-and-
 
 ---
 
-## TC-15: Lighthouse mobile ≥ 90 on Home and About {#tc-15}
+## TC-15: Lighthouse mobile ≥ 90 on Home, About, and Docs {#tc-15}
 
-**Type:** Manual (Lighthouse CLI or Chrome DevTools) · **Backlog:** BL-06
+**Type:** Manual (Lighthouse CLI or Chrome DevTools) for `/` and `/about`; automated Playwright + Lighthouse for `/docs` · **Backlog:** BL-06, BL-10
 
 **Traces to:** [NFR-03](../3-arch/solution-strategy.md#nfr-03-performance-seo)
 
 **Steps:**
 
-1. Run Lighthouse mobile audit on `/` and `/about`
+1. Run Lighthouse mobile audit on `/`, `/about`, and `/docs`
 2. Record Performance, Accessibility, and SEO scores
 
-**Pass when:** All three categories score ≥ 90 on both routes.
+**Pass when:** All three categories score ≥ 90 on each route (`/docs` covered by [tc-15-lighthouse-docs.spec.ts](../6-code/tests/additional/e2e/tc-15-lighthouse-docs.spec.ts)).
 
 ---
 
 ## TC-16: WCAG 2.1 AA — axe and keyboard walkthrough {#tc-16}
 
-**Type:** Manual (axe-core + keyboard) · **Backlog:** BL-06
+**Type:** Manual (axe-core + keyboard) for Home and About; automated Playwright + axe for Docs · **Backlog:** BL-06, BL-10
 
 **Traces to:** [NFR-02](../3-arch/solution-strategy.md#nfr-02-accessibility)
 
 **Steps:**
 
-1. Run axe (or equivalent) on Home and About
-2. Tab through header nav, in-page links, hero CTA, and footer LinkedIn
+1. Run axe (or equivalent) on Home, About, and Docs
+2. Tab through header nav, in-page links, doc tree, pane links, hero CTA, and footer LinkedIn
 3. Assert visible focus indicators and logical focus order
 
-**Pass when:** No critical axe violations; keyboard path covers nav and links.
+**Pass when:** No critical axe violations; keyboard path covers nav and links (`/docs` covered by [tc-16-docs-a11y.spec.ts](../6-code/tests/additional/e2e/tc-16-docs-a11y.spec.ts)).
 
 ---
 
