@@ -2,7 +2,7 @@
 
 See [06-traceability](../.cursor/rules/06-traceability.mdc).
 
-**Must scope** (`GOL-01`, `GOL-02`) — full chain `GOL → SCN → UR → FR → BL → TC` for F01–F03. F04 (Should) mapped in **By Feature** only.
+**Must scope** (`GOL-01`, `GOL-02`) — full chain `GOL → SCN → UR → FR → BL → TC` for F01–F03 and F05. F04 (Should) mapped in **By Feature** only.
 
 ## Matrix
 
@@ -35,6 +35,10 @@ See [06-traceability](../.cursor/rules/06-traceability.mdc).
 | [GOL-01](../1-scope/stakeholders-and-goals.md#gol-01-educate-practitioners) | [SCN-01](../1-scope/business-scenarios.md#scn-01-practitioner-discovers) | UR-F03-01 | [FR-F03-07](../2-features/F03-about-page.md#fr-f03-07) | F03 | — | [ADR-04](../3-arch/solution-strategy.md#adr-04-tsx-component-content-model) | [BL-04](backlog.md#bl-04-about-page) | [TC-12](testing-plan.md#tc-12) |
 | [GOL-01](../1-scope/stakeholders-and-goals.md#gol-01-educate-practitioners) | [SCN-01](../1-scope/business-scenarios.md#scn-01-practitioner-discovers) | UR-F03-01 | [FR-F03-08](../2-features/F03-about-page.md#fr-f03-08) | F03 | [NFR-03](../3-arch/solution-strategy.md#nfr-03-performance-seo) | [ADR-01](../3-arch/solution-strategy.md#adr-01-nextjs-app-router-with-ssg-on-vercel) | [BL-04](backlog.md#bl-04-about-page) | [TC-01](testing-plan.md#tc-01) |
 | [GOL-01](../1-scope/stakeholders-and-goals.md#gol-01-educate-practitioners) | [SCN-01](../1-scope/business-scenarios.md#scn-01-practitioner-discovers) | UR-F03-01 | [FR-F03-09](../2-features/F03-about-page.md#fr-f03-09) | F03 | — | [ADR-04](../3-arch/solution-strategy.md#adr-04-tsx-component-content-model) | [BL-04](backlog.md#bl-04-about-page) | [TC-12](testing-plan.md#tc-12) |
+
+| [GOL-01](../1-scope/stakeholders-and-goals.md#gol-01-educate-practitioners) | [SCN-04](../1-scope/business-scenarios.md#scn-04-explore-live-docs) | UR-F05-01 | [FR-F05-01](../2-features/F05-documentation-browser.md#fr-f05-01) | F05 | [NFR-01](../3-arch/solution-strategy.md#nfr-01-responsive-layout), [NFR-04](../3-arch/solution-strategy.md#nfr-04-static-architecture) | [ADR-06](../3-arch/solution-strategy.md#adr-06-build-time-product-doc-browser) | [BL-08](backlog.md#bl-08-documentation-browser-page) | [TC-20](testing-plan.md#tc-20) |
+| [GOL-01](../1-scope/stakeholders-and-goals.md#gol-01-educate-practitioners) | [SCN-04](../1-scope/business-scenarios.md#scn-04-explore-live-docs) | UR-F05-02 | [FR-F05-04](../2-features/F05-documentation-browser.md#fr-f05-04) | F05 | — | [ADR-06](../3-arch/solution-strategy.md#adr-06-build-time-product-doc-browser) | [BL-08](backlog.md#bl-08-documentation-browser-page) | [TC-20](testing-plan.md#tc-20) |
+| [GOL-02](../1-scope/stakeholders-and-goals.md#gol-02-brand-credibility) | [SCN-04](../1-scope/business-scenarios.md#scn-04-explore-live-docs) | UR-F05-03 | [FR-F05-07](../2-features/F05-documentation-browser.md#fr-f05-07) | F05 | [NFR-02](../3-arch/solution-strategy.md#nfr-02-accessibility) | [ADR-06](../3-arch/solution-strategy.md#adr-06-build-time-product-doc-browser) | [BL-08](backlog.md#bl-08-documentation-browser-page) | [TC-21](testing-plan.md#tc-21) |
 
 ## By Feature
 
@@ -79,12 +83,22 @@ See [06-traceability](../.cursor/rules/06-traceability.mdc).
 
 **Traces to:** [GOL-03](../1-scope/stakeholders-and-goals.md#gol-03-optional-contact), [SCN-03](../1-scope/business-scenarios.md#scn-03-optional-contact) · **Requires:** [F01](../2-features/F01-site-shell-layout.md)
 
+### F05: Documentation browser
+
+| UR | FR | Backlog | Tests |
+|----|----|---------|-------|
+| UR-F05-01 | [FR-F05-01](../2-features/F05-documentation-browser.md#fr-f05-01)–[FR-F05-03](../2-features/F05-documentation-browser.md#fr-f05-03), [FR-F05-09](../2-features/F05-documentation-browser.md#fr-f05-09), [FR-F05-10](../2-features/F05-documentation-browser.md#fr-f05-10) | [BL-08](backlog.md#bl-08-documentation-browser-page), [BL-09](backlog.md#bl-09-shell-nav-docs-link) | [TC-20](testing-plan.md#tc-20), [TC-22](testing-plan.md#tc-22), [TC-01](testing-plan.md#tc-01) |
+| UR-F05-02 | [FR-F05-04](../2-features/F05-documentation-browser.md#fr-f05-04)–[FR-F05-06](../2-features/F05-documentation-browser.md#fr-f05-06), [FR-F05-11](../2-features/F05-documentation-browser.md#fr-f05-11) | [BL-07](backlog.md#bl-07-product-doc-build-pipeline), [BL-08](backlog.md#bl-08-documentation-browser-page) | [TC-19](testing-plan.md#tc-19), [TC-20](testing-plan.md#tc-20) |
+| UR-F05-03 | [FR-F05-07](../2-features/F05-documentation-browser.md#fr-f05-07), [FR-F05-08](../2-features/F05-documentation-browser.md#fr-f05-08) | [BL-08](backlog.md#bl-08-documentation-browser-page) | [TC-21](testing-plan.md#tc-21) |
+
+**Traces to:** [GOL-01](../1-scope/stakeholders-and-goals.md#gol-01-educate-practitioners), [GOL-02](../1-scope/stakeholders-and-goals.md#gol-02-brand-credibility), [SCN-01](../1-scope/business-scenarios.md#scn-01-practitioner-discovers), [SCN-04](../1-scope/business-scenarios.md#scn-04-explore-live-docs) · **Requires:** [F01](../2-features/F01-site-shell-layout.md)
+
 ## Cross-cutting
 
 | NFR | Features | ADR | Backlog | Tests |
 |-----|----------|-----|---------|-------|
-| [NFR-01](../3-arch/solution-strategy.md#nfr-01-responsive-layout) | F01, F02, F03, F04 | [ADR-02](../3-arch/solution-strategy.md#adr-02-tailwind-css-styling) | BL-02–BL-05 | TC-04, TC-05, TC-10 |
-| [NFR-02](../3-arch/solution-strategy.md#nfr-02-accessibility) | F01, F02, F03, F04 | [ADR-05](../3-arch/solution-strategy.md#adr-05-playwright-and-vitest-testing) | [BL-06](backlog.md#bl-06-quality-gates--regression-tests) | [TC-16](testing-plan.md#tc-16) |
-| [NFR-03](../3-arch/solution-strategy.md#nfr-03-performance-seo) | F01, F02, F03 | [ADR-01](../3-arch/solution-strategy.md#adr-01-nextjs-app-router-with-ssg-on-vercel) | [BL-06](backlog.md#bl-06-quality-gates--regression-tests) | [TC-15](testing-plan.md#tc-15) |
-| [NFR-04](../3-arch/solution-strategy.md#nfr-04-static-architecture) | F01, F02, F03, F04 | [ADR-01](../3-arch/solution-strategy.md#adr-01-nextjs-app-router-with-ssg-on-vercel), [ADR-04](../3-arch/solution-strategy.md#adr-04-tsx-component-content-model) | [BL-01](backlog.md#bl-01-nextjs-project-scaffold) | [TC-18](testing-plan.md#tc-18) |
+| [NFR-01](../3-arch/solution-strategy.md#nfr-01-responsive-layout) | F01, F02, F03, F04, F05 | [ADR-02](../3-arch/solution-strategy.md#adr-02-tailwind-css-styling) | BL-02–BL-05, BL-08 | TC-04, TC-05, TC-10, TC-20 |
+| [NFR-02](../3-arch/solution-strategy.md#nfr-02-accessibility) | F01, F02, F03, F04, F05 | [ADR-05](../3-arch/solution-strategy.md#adr-05-playwright-and-vitest-testing) | [BL-06](backlog.md#bl-06-quality-gates--regression-tests), [BL-10](backlog.md#bl-10-docs-quality-gates--regression-tests) | [TC-16](testing-plan.md#tc-16) |
+| [NFR-03](../3-arch/solution-strategy.md#nfr-03-performance-seo) | F01, F02, F03, F05 | [ADR-01](../3-arch/solution-strategy.md#adr-01-nextjs-app-router-with-ssg-on-vercel) | [BL-06](backlog.md#bl-06-quality-gates--regression-tests), [BL-10](backlog.md#bl-10-docs-quality-gates--regression-tests) | [TC-15](testing-plan.md#tc-15) |
+| [NFR-04](../3-arch/solution-strategy.md#nfr-04-static-architecture) | F01, F02, F03, F04, F05 | [ADR-01](../3-arch/solution-strategy.md#adr-01-nextjs-app-router-with-ssg-on-vercel), [ADR-04](../3-arch/solution-strategy.md#adr-04-tsx-component-content-model), [ADR-06](../3-arch/solution-strategy.md#adr-06-build-time-product-doc-browser) | [BL-01](backlog.md#bl-01-nextjs-project-scaffold), [BL-07](backlog.md#bl-07-product-doc-build-pipeline) | [TC-18](testing-plan.md#tc-18), [TC-19](testing-plan.md#tc-19) |
 | [NFR-05](../3-arch/solution-strategy.md#nfr-05-external-link-security) | F03, F04 | — | BL-04, BL-05 | TC-13, TC-14 |

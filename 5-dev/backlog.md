@@ -8,6 +8,10 @@
 | BL-04 | F03 | About page | Story | Must | Done | BL-02 |
 | BL-05 | F04 | Footer LinkedIn contact | Story | Should | Done | BL-02 |
 | BL-06 | — | Quality gates & regression tests | Chore | Must | Done | BL-03, BL-04, BL-05 |
+| BL-07 | F05 | Product doc build pipeline | Chore | Must | Todo | BL-01 |
+| BL-08 | F05 | Documentation browser page | Story | Must | Todo | BL-02, BL-07, BL-09 |
+| BL-09 | F01, F05 | Shell nav Docs link | Story | Must | Todo | BL-02 |
+| BL-10 | F05 | Docs quality gates & regression tests | Chore | Must | Todo | BL-08, BL-09 |
 
 ## Suggested implementation order
 
@@ -17,6 +21,10 @@
 4. BL-04
 5. BL-05
 6. BL-06
+7. BL-07
+8. BL-09
+9. BL-08
+10. BL-10
 
 Respect **Dependencies** — a `BL-##` is not eligible until every listed dependency is `Done`.
 
@@ -32,19 +40,30 @@ flowchart TD
     BL04["BL-04 · About page"]
     BL05["BL-05 · Footer LinkedIn"]
     BL06["BL-06 · Quality gates"]
+    BL07["BL-07 · Doc pipeline"]
+    BL08["BL-08 · Docs browser"]
+    BL09["BL-09 · Docs nav"]
+    BL10["BL-10 · Docs quality"]
     BL01 --> BL02
     BL02 --> BL03
     BL02 --> BL04
     BL02 --> BL05
+    BL02 --> BL09
+    BL01 --> BL07
     BL03 --> BL06
     BL04 --> BL06
     BL05 --> BL06
+    BL07 --> BL08
+    BL09 --> BL08
+    BL08 --> BL10
+    BL09 --> BL10
 
     classDef todo fill:#fef3c7,stroke:#d97706,color:#1f2937
     classDef inprogress fill:#dbeafe,stroke:#2563eb,color:#1f2937
     classDef done fill:#d1fae5,stroke:#059669,color:#1f2937
 
     class BL01,BL02,BL03,BL04,BL05,BL06 done
+    class BL07,BL08,BL09,BL10 todo
 ```
 
 | Status | Color |
@@ -61,6 +80,10 @@ flowchart TD
 | BL-04 | BL-02 | About renders in shell main slot; may parallel BL-03 after BL-02 |
 | BL-05 | BL-02 | Footer LinkedIn extends BB-02.3; Should priority |
 | BL-06 | BL-03, BL-04, BL-05 | Lighthouse, a11y, and E2E smoke after feature routes ship |
+| BL-07 | BL-01 | Build-time scan of `1-scope/`–`5-dev/`; doc index + SVG staging per [ADR-06](../3-arch/solution-strategy.md#adr-06-build-time-product-doc-browser) |
+| BL-08 | BL-02, BL-07 | `/docs` split-pane UI — tree, markdown pane, Mermaid |
+| BL-09 | BL-02 | Header/mobile nav **Docs** link and active state |
+| BL-10 | BL-08, BL-09 | Lighthouse/a11y/E2E for `/docs`; extend regression suite |
 
 **Rules:** direct deps only; no transitive arrows; no cycles; **Depends on** = hard gate for implementation order.
 
@@ -169,3 +192,62 @@ flowchart TD
 - [x] Given `/` and `/about` on mobile viewport, when Lighthouse audit runs, then Performance, Accessibility, and SEO scores are ≥ 90 ([NFR-03](../3-arch/solution-strategy.md#nfr-03-performance-seo))
 - [x] Given Home and About, when automated a11y checks and keyboard walkthrough run, then WCAG 2.1 AA violations are absent on nav, in-page links, and footer contact ([NFR-02](../3-arch/solution-strategy.md#nfr-02-accessibility))
 - [x] Given the Playwright and Vitest suites, when `npm test` (or CI equivalent) runs, then all mapped `TC-##` cases pass ([ADR-05](../3-arch/solution-strategy.md#adr-05-playwright-and-vitest-testing))
+
+---
+
+## BL-07: Product doc build pipeline
+
+**Feature:** [F05-documentation-browser](../2-features/F05-documentation-browser.md)
+**Traces to:** [FR-F05-11](../2-features/F05-documentation-browser.md#fr-f05-11), [ADR-06](../3-arch/solution-strategy.md#adr-06-build-time-product-doc-browser), [NFR-04](../3-arch/solution-strategy.md#nfr-04-static-architecture)
+**Dependencies:** BL-01
+**Tests:** [TC-19](testing-plan.md#tc-19)
+**Acceptance criteria:**
+
+- [ ] Given the repository product folders, when the build pipeline runs, then a static index is generated for `1-scope/`, `2-features/`, `3-arch/`, `4-design/`, and `5-dev/` excluding `consultation/` and `6-code/`
+- [ ] Given indexed `.md` files, when the build completes, then each path has retrievable markdown content without runtime API routes
+- [ ] Given SVG files under `4-design/mockups/`, when the build completes, then assets are available for static serving in rendered docs
+
+---
+
+## BL-08: Documentation browser page
+
+**Feature:** [F05-documentation-browser](../2-features/F05-documentation-browser.md)
+**Traces to:** [FR-F05-01](../2-features/F05-documentation-browser.md#fr-f05-01)–[FR-F05-10](../2-features/F05-documentation-browser.md#fr-f05-10)
+**Dependencies:** BL-02, BL-07, BL-09
+**Tests:** [TC-20](testing-plan.md#tc-20), [TC-21](testing-plan.md#tc-21), [TC-01](testing-plan.md#tc-01)
+**Acceptance criteria:**
+
+- [ ] Given the site is loaded, when the visitor opens `/docs`, then the F01 shell wraps a split-pane docs layout ([FR-F05-01](../2-features/F05-documentation-browser.md#fr-f05-01))
+- [ ] Given Docs loads, when the visitor views the sidebar, then phase folders `1-scope/` through `5-dev/` appear with selectable `.md` files ([FR-F05-03](../2-features/F05-documentation-browser.md#fr-f05-03))
+- [ ] Given a `.md` file is selected, when the pane renders, then headings, tables, code blocks, Mermaid diagrams, and SVG images display ([FR-F05-04](../2-features/F05-documentation-browser.md#fr-f05-04)–[FR-F05-06](../2-features/F05-documentation-browser.md#fr-f05-06))
+- [ ] Given rendered doc content, when the visitor clicks a relative link to another product `.md` file, then the pane updates without leaving `/docs` ([FR-F05-07](../2-features/F05-documentation-browser.md#fr-f05-07))
+- [ ] Given a narrow viewport, when Docs loads, then the folder tree is behind a toggle and the content pane is primary ([FR-F05-09](../2-features/F05-documentation-browser.md#fr-f05-09))
+- [ ] Given Docs loads, when metadata is inspected, then title uses the shared template ([FR-F05-10](../2-features/F05-documentation-browser.md#fr-f05-10))
+
+---
+
+## BL-09: Shell nav Docs link
+
+**Feature:** [F01-site-shell-layout](../2-features/F01-site-shell-layout.md), [F05-documentation-browser](../2-features/F05-documentation-browser.md)
+**Traces to:** [FR-F01-03](../2-features/F01-site-shell-layout.md#fr-f01-03), [FR-F05-02](../2-features/F05-documentation-browser.md#fr-f05-02)
+**Dependencies:** BL-02
+**Tests:** [TC-22](testing-plan.md#tc-22)
+**Acceptance criteria:**
+
+- [ ] Given any page, when the header renders, then **Home**, **About**, and **Docs** nav links are visible on desktop ([FR-F01-03](../2-features/F01-site-shell-layout.md#fr-f01-03))
+- [ ] Given the visitor is on `/docs`, when they view the header, then Docs is marked active ([FR-F05-02](../2-features/F05-documentation-browser.md#fr-f05-02))
+- [ ] Given mobile viewport, when the hamburger menu opens, then Docs appears alongside Home and About ([FR-F01-04](../2-features/F01-site-shell-layout.md#fr-f01-04))
+
+---
+
+## BL-10: Docs quality gates & regression tests
+
+**Feature:** [F05-documentation-browser](../2-features/F05-documentation-browser.md) *(cross-cutting)*
+**Traces to:** [NFR-02](../3-arch/solution-strategy.md#nfr-02-accessibility), [NFR-03](../3-arch/solution-strategy.md#nfr-03-performance-seo), [RT-04](../3-arch/runtime-views.md#rt-04-documentation-browser-journey), [ADR-05](../3-arch/solution-strategy.md#adr-05-playwright-and-vitest-testing)
+**Dependencies:** BL-08, BL-09
+**Tests:** [TC-15](testing-plan.md#tc-15), [TC-16](testing-plan.md#tc-16), [TC-20](testing-plan.md#tc-20), [TC-21](testing-plan.md#tc-21), [TC-22](testing-plan.md#tc-22)
+**Acceptance criteria:**
+
+- [ ] Given `/docs` on mobile viewport, when Lighthouse audit runs, then Performance, Accessibility, and SEO scores are ≥ 90 ([NFR-03](../3-arch/solution-strategy.md#nfr-03-performance-seo))
+- [ ] Given Docs route, when automated a11y checks and keyboard walkthrough run, then WCAG 2.1 AA violations are absent on tree, pane links, and nav ([NFR-02](../3-arch/solution-strategy.md#nfr-02-accessibility))
+- [ ] Given the extended Playwright suite, when tests run, then all F05-mapped `TC-##` cases pass ([ADR-05](../3-arch/solution-strategy.md#adr-05-playwright-and-vitest-testing))

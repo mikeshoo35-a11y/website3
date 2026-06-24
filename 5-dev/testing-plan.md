@@ -18,10 +18,14 @@ Test strategy per [ADR-05](../3-arch/solution-strategy.md#adr-05-playwright-and-
 | TC-12 | E2E | About page sections and order | [FR-F03-01](../2-features/F03-about-page.md#fr-f03-01)–[FR-F03-05](../2-features/F03-about-page.md#fr-f03-05), [FR-F03-07](../2-features/F03-about-page.md#fr-f03-07), [FR-F03-09](../2-features/F03-about-page.md#fr-f03-09) | BL-04 |
 | TC-13 | E2E | About author LinkedIn link security | [FR-F03-06](../2-features/F03-about-page.md#fr-f03-06), [NFR-05](../3-arch/solution-strategy.md#nfr-05-external-link-security) | BL-04 |
 | TC-14 | E2E | Footer LinkedIn contact | [FR-F04-01](../2-features/F04-optional-linkedin-contact.md#fr-f04-01)–[FR-F04-07](../2-features/F04-optional-linkedin-contact.md#fr-f04-07) | BL-05 |
-| TC-15 | Manual | Lighthouse mobile ≥ 90 on Home and About | [NFR-03](../3-arch/solution-strategy.md#nfr-03-performance-seo) | BL-06 |
+| TC-15 | Manual | Lighthouse mobile ≥ 90 on Home, About, and Docs | [NFR-03](../3-arch/solution-strategy.md#nfr-03-performance-seo) | BL-06, BL-10 |
 | TC-16 | Manual | WCAG 2.1 AA — axe and keyboard walkthrough | [NFR-02](../3-arch/solution-strategy.md#nfr-02-accessibility) | BL-06 |
 | TC-17 | E2E | Practitioner cross-route journey smoke | [RT-01](../3-arch/runtime-views.md#rt-01-practitioner-cross-route-journey), [SCN-01](../1-scope/business-scenarios.md#scn-01-practitioner-discovers) | BL-06 |
 | TC-18 | Build | Project scaffold build succeeds | [ADR-01](../3-arch/solution-strategy.md#adr-01-nextjs-app-router-with-ssg-on-vercel), [NFR-04](../3-arch/solution-strategy.md#nfr-04-static-architecture) | BL-01 |
+| TC-19 | Build | Product doc index generation | [FR-F05-11](../2-features/F05-documentation-browser.md#fr-f05-11), [ADR-06](../3-arch/solution-strategy.md#adr-06-build-time-product-doc-browser) | BL-07 |
+| TC-20 | E2E | Docs route tree and markdown rendering | [FR-F05-01](../2-features/F05-documentation-browser.md#fr-f05-01)–[FR-F05-06](../2-features/F05-documentation-browser.md#fr-f05-06) | BL-08 |
+| TC-21 | E2E | Docs in-viewer relative link navigation | [FR-F05-07](../2-features/F05-documentation-browser.md#fr-f05-07), [FR-F05-08](../2-features/F05-documentation-browser.md#fr-f05-08) | BL-08 |
+| TC-22 | E2E | Docs nav link and active state | [FR-F01-03](../2-features/F01-site-shell-layout.md#fr-f01-03), [FR-F05-02](../2-features/F05-documentation-browser.md#fr-f05-02) | BL-09 |
 
 ---
 
@@ -312,3 +316,72 @@ Test strategy per [ADR-05](../3-arch/solution-strategy.md#adr-05-playwright-and-
 2. Assert exit code 0 and static output for App Router
 
 **Pass when:** Clean production build with no API or database dependencies.
+
+---
+
+## TC-19: Product doc index generation {#tc-19}
+
+**Type:** Build (Vitest or build script test) · **Backlog:** BL-07
+
+**Traces to:** [FR-F05-11](../2-features/F05-documentation-browser.md#fr-f05-11), [ADR-06](../3-arch/solution-strategy.md#adr-06-build-time-product-doc-browser)
+
+**Steps:**
+
+1. Run doc index build script (or full `npm run build`)
+2. Assert generated index includes paths under `1-scope/`, `2-features/`, `3-arch/`, `4-design/`, `5-dev/`
+3. Assert `consultation/` and `6-code/` paths are absent
+4. Assert at least one known file (e.g. `1-scope/features-list.md`) has non-empty content in the index
+
+**Pass when:** Static doc index is produced at build time with correct scope boundaries.
+
+---
+
+## TC-20: Docs route tree and markdown rendering {#tc-20}
+
+**Type:** E2E (Playwright) · **Backlog:** BL-08
+
+**Traces to:** [FR-F05-01](../2-features/F05-documentation-browser.md#fr-f05-01)–[FR-F05-06](../2-features/F05-documentation-browser.md#fr-f05-06)
+
+**Steps:**
+
+1. Navigate to `/docs`
+2. Assert shell landmarks and split-pane layout (tree + content)
+3. Expand `1-scope/` and select `features-list.md`
+4. Assert rendered heading and table content visible
+5. Open a doc with Mermaid (e.g. `features-list.md` dependencies diagram) — assert diagram renders
+6. Open `4-design/mockups.md` — assert at least one SVG image renders
+
+**Pass when:** Docs route shows tree navigation and full markdown fidelity including Mermaid and SVG.
+
+---
+
+## TC-21: Docs in-viewer relative link navigation {#tc-21}
+
+**Type:** E2E (Playwright) · **Backlog:** BL-08
+
+**Traces to:** [FR-F05-07](../2-features/F05-documentation-browser.md#fr-f05-07), [FR-F05-08](../2-features/F05-documentation-browser.md#fr-f05-08)
+
+**Steps:**
+
+1. On `/docs`, open `1-scope/features-list.md`
+2. Click a relative link to a `2-features/F##_*.md` file
+3. Assert URL stays under `/docs` and target content renders
+4. Activate an external `https://` link in a doc — assert `target="_blank"` and `rel` includes `noopener`
+
+**Pass when:** Relative product links navigate in-viewer; external links open safely in new tab.
+
+---
+
+## TC-22: Docs nav link and active state {#tc-22}
+
+**Type:** E2E (Playwright) · **Backlog:** BL-09
+
+**Traces to:** [FR-F01-03](../2-features/F01-site-shell-layout.md#fr-f01-03), [FR-F05-02](../2-features/F05-documentation-browser.md#fr-f05-02)
+
+**Steps:**
+
+1. On Home, assert header shows Home, About, and Docs links
+2. Navigate to `/docs` — assert Docs link has active styling
+3. On mobile viewport, open hamburger — assert Docs link present and navigates to `/docs`
+
+**Pass when:** Docs appears in global nav with correct active state on desktop and mobile.

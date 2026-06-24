@@ -14,7 +14,7 @@ requires: [F01]
 
 **Intent:** Deliver the Home marketing route (`/`) inside the F01 shell — a methodology-first **hero**, a **four-card benefits grid**, a **three-step how-it-works** section, and a soft **About band** — so practitioners quickly understand AI-friendly documentation and can assess team fit.
 
-**Scope:** **In:** hero (headline, subhead, scroll-to-benefits CTA), benefits grid (rapid docs, test coverage, quality, legacy modernization), how-it-works steps, closing About prompt, Home route metadata, in-page anchor scroll. **Out:** site shell and global nav ([F01](F01-site-shell-layout.md)); About page body ([F03](F03-about-page.md)); LinkedIn or hire-me CTAs ([F04](F04-optional-linkedin-contact.md), scope non-goals); live doc browser, case studies, forms, or CMS-driven content.
+**Scope:** **In:** hero (headline, subhead, scroll-to-benefits CTA), benefits grid (rapid docs, test coverage, quality, legacy modernization), how-it-works steps, closing About prompt, Home route metadata, in-page anchor scroll. **Out:** site shell and global nav ([F01](F01-site-shell-layout.md)); About page body ([F03](F03-about-page.md)); documentation browser ([F05](F05-documentation-browser.md)); LinkedIn or hire-me CTAs ([F04](F04-optional-linkedin-contact.md), scope non-goals); case studies, forms, or CMS-driven content.
 
 **Trace:** [GOL-01](../1-scope/stakeholders-and-goals.md#gol-01-educate-practitioners), [SCN-01](../1-scope/business-scenarios.md#scn-01-practitioner-discovers), [SCN-02](../1-scope/business-scenarios.md#scn-02-evaluate-benefits); [NFR-01](../3-arch/solution-strategy.md#nfr-01-responsive-layout), [NFR-02](../3-arch/solution-strategy.md#nfr-02-accessibility), [NFR-03](../3-arch/solution-strategy.md#nfr-03-performance-seo), [NFR-04](../3-arch/solution-strategy.md#nfr-04-static-architecture)
 
@@ -99,7 +99,7 @@ flowchart LR
 4. **Practitioner** reads **How it works** — three-step workflow from structured docs to delivery (FR-F02-06).
 5. **Visitor** (optional) follows **About band** — navigates to About for credibility (FR-F02-07); alternate path from SCN-02 before judgment.
 
-**Not in F02:** Header, footer frame, global nav (F01); About page content (F03); footer LinkedIn (F04); embedded documentation browser; testimonials or case-study portfolio.
+**Not in F02:** Header, footer frame, global nav (F01); About page content (F03); footer LinkedIn (F04); documentation browser UI ([F05](F05-documentation-browser.md)); testimonials or case-study portfolio.
 
 **Mockups:** [MCK-03](../4-design/mockups.md#mck-03-home-hero) hero, [MCK-04](../4-design/mockups.md#mck-04-home-benefits) benefits, [MCK-05](../4-design/mockups.md#mck-05-home-how-it-works) how-it-works, [MCK-06](../4-design/mockups.md#mck-06-home-full-desktop) / [MCK-07](../4-design/mockups.md#mck-07-home-full-mobile) full page
 

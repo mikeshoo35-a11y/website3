@@ -12,7 +12,7 @@
 
 | ID | Goal | Success Metric | Stakeholder(s) | Priority |
 |----|------|----------------|----------------|----------|
-| GOL-01 | Educate practitioners on AI-friendly documentation | Home and About clearly explain the concept, benefits (rapid doc development, test coverage, quality, legacy modernization), and how AI agents use text-first docs; a practitioner can summarize the approach after one visit | STK-02 | Must |
+| GOL-01 | Educate practitioners on AI-friendly documentation | Home and About clearly explain the concept, benefits (rapid doc development, test coverage, quality, legacy modernization), and how AI agents use text-first docs; the **Docs** route lets practitioners browse this product’s live documentation tree; a practitioner can summarize the approach after one visit | STK-02 | Must |
 | GOL-02 | Demonstrate professional, enterprise-grade quality through the site itself | Site presents as polished corporate-consulting quality (light theme, trust-focused layout, consistent typography); no broken layouts on desktop and mobile viewports | STK-01, STK-03 | Must |
 | GOL-03 | Provide optional contact path without overshadowing educational content | LinkedIn link appears in About and/or footer only; no prominent hire-me hero CTA | STK-03 | Should |
 
@@ -34,14 +34,16 @@ flowchart LR
     G3 --> SCN03["SCN-03 Optional contact"]
     G1 --> F02["F02 Home page"]
     G1 --> F03["F03 About page"]
+    G1 --> F05["F05 Docs browser"]
     G2 --> F01["F01 Site shell"]
     G2 --> F03
+    G2 --> F05
     G3 --> F04["F04 LinkedIn contact"]
 ```
 
 ## Non-Goals
 
-- Hosting browsable sample documentation or an interactive doc browser on the site (marketing explanation only)
+- Browsing arbitrary third-party documentation sets or uploading user-owned doc trees (this product’s repository docs only)
 - Prominent hire-me funnel, lead forms, or hero-level contact CTAs
 - Multi-language support at launch (English only)
 - User accounts, CMS admin UI, or dynamic content management in MVP
@@ -59,6 +61,6 @@ flowchart LR
 - **Stack:** Next.js static/marketing site per solution strategy (to be documented in `3-arch/`)
 - **Hosting:** Vercel
 - **Language:** English only at launch
-- **Page scope (MVP):** Home (hero, benefits, how it works), About, footer with LinkedIn
+- **Page scope (MVP):** Home (hero, benefits, how it works), About, **Docs** (product documentation browser), footer with LinkedIn
 - **Visual direction:** Corporate consulting — light theme, trust-focused, enterprise-friendly
-- **Demonstration model:** Explain AI-friendly documentation in prose; do not embed a live documentation tree on the site
+- **Demonstration model:** Home and About explain the methodology in prose; the **Docs** route (`/docs`) embeds a read-only browser of this product’s numbered documentation folders (`1-scope/`–`5-dev/`) as a live quality demo

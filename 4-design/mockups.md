@@ -18,6 +18,9 @@ SVG rules: [08-design-mockups](../.cursor/rules/08-design-mockups.mdc). Design t
 | MCK-12 | About — full page (desktop) | [MCK-12-about-full-desktop.svg](mockups/screens/MCK-12-about-full-desktop.svg) | F03 | JRN-01, JRN-02, JRN-03 | `/about` | Draft |
 | MCK-13 | About — full page (mobile) | [MCK-13-about-full-mobile.svg](mockups/screens/MCK-13-about-full-mobile.svg) | F03 | JRN-02 | `/about` | Draft |
 | MCK-14 | 404 not found | [MCK-14-not-found.svg](mockups/screens/MCK-14-not-found.svg) | F01 | — | `*` | Draft |
+| MCK-15 | Docs — full page (desktop) | — | F05 | JRN-04 | `/docs` | Planned |
+| MCK-16 | Docs — full page (mobile) | — | F05 | JRN-04 | `/docs` | Planned |
+| MCK-17 | Docs — tree + content pane | — | F05 | JRN-04 | `/docs` | Planned |
 
 ## MCK-01: Site shell (header + footer) {#mck-01-site-shell}
 
@@ -182,3 +185,39 @@ SVG rules: [08-design-mockups](../.cursor/rules/08-design-mockups.mdc). Design t
 
 - Same shell as MCK-01; main slot shows centred **Page not found** message and link back to Home
 - No stack trace or technical error detail
+
+## MCK-15: Docs — full page (desktop) {#mck-15-docs-browser-desktop}
+
+**Feature:** [F05-documentation-browser](../2-features/F05-documentation-browser.md) · **FR:** [FR-F05-01](../2-features/F05-documentation-browser.md#fr-f05-01)–[FR-F05-03](../2-features/F05-documentation-browser.md#fr-f05-03) · **Components:** [CMP-01](design-strategy.md#cmp-01-site-header), [CMP-09](design-strategy.md#cmp-09-doc-tree-sidebar), [CMP-10](design-strategy.md#cmp-10-markdown-content-pane)
+
+**Layout (planned):**
+
+- Standard site shell with **Docs** nav active
+- Split layout below header: left doc tree (~260px), right markdown pane with rendered `features-list.md` or similar
+- Footer band unchanged from MCK-01
+
+*SVG deferred — layout spec authoritative until asset created.*
+
+## MCK-16: Docs — full page (mobile) {#mck-16-docs-browser-mobile}
+
+**Feature:** [F05-documentation-browser](../2-features/F05-documentation-browser.md) · **FR:** [FR-F05-09](../2-features/F05-documentation-browser.md#fr-f05-09) · **Components:** [CMP-02](design-strategy.md#cmp-02-mobile-nav-drawer), [CMP-09](design-strategy.md#cmp-09-doc-tree-sidebar), [CMP-10](design-strategy.md#cmp-10-markdown-content-pane)
+
+**Layout (planned):**
+
+- Narrow viewport (360px); hamburger for site nav; separate **Browse files** toggle for doc tree drawer
+- Content pane full width when tree closed
+- Markdown prose reflows; tables scroll horizontally if needed
+
+*SVG deferred.*
+
+## MCK-17: Docs — tree + content pane {#mck-17-docs-tree-and-content}
+
+**Feature:** [F05-documentation-browser](../2-features/F05-documentation-browser.md) · **FR:** [FR-F05-04](../2-features/F05-documentation-browser.md#fr-f05-04)–[FR-F05-07](../2-features/F05-documentation-browser.md#fr-f05-07) · **Components:** [CMP-09](design-strategy.md#cmp-09-doc-tree-sidebar), [CMP-10](design-strategy.md#cmp-10-markdown-content-pane)
+
+**Layout (planned):**
+
+- Expanded tree showing `4-design/` with `mockups.md` selected
+- Content pane: rendered heading, table, Mermaid diagram block, and inline SVG mockup image
+- Relative link to another `.md` file styled as teal prose link
+
+*SVG deferred.*

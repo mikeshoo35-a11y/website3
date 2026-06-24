@@ -9,6 +9,7 @@
 | Rapid documentation development | Accelerated production of full documentation sets — PRDs, SDS, business requirements, reviews, interview notes, validation artifacts, test scenarios, and feature descriptions — using structured docs plus AI assistance | — | [business-scenarios.md](business-scenarios.md) |
 | Test coverage maintenance | Using structured documentation to generate and keep testing scenarios and coverage maps aligned with requirements and features | — | [business-scenarios.md](business-scenarios.md) |
 | Legacy modernization | Refactoring old or legacy codebases into manageable, high-quality projects supported by comprehensive, AI-friendly documentation | — | [business-scenarios.md](business-scenarios.md) |
+| Documentation browser | Read-only `/docs` route with folder tree and rendered markdown for this product’s `1-scope/`–`5-dev/` tree | Doc browser, live docs demo | [F05-documentation-browser](2-features/F05-documentation-browser.md) |
 
 ## Acronyms
 

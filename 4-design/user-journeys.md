@@ -114,13 +114,50 @@ Journey storyboard SVG: —
 
 ---
 
+## JRN-04: Practitioner explores live documentation {#jrn-04-explore-live-docs}
+
+**Persona:** Practitioner visitor · **Goal:** Browse this product’s documentation tree with rendered markdown to see AI Friendly Docs in practice · **Scenario:** [SCN-04](../1-scope/business-scenarios.md#scn-04-explore-live-docs) · **Runtime:** [RT-04](../3-arch/runtime-views.md#rt-04-documentation-browser-journey) · **Features:** F01, F05
+
+### Steps
+
+| Step | Action | Feature | UI state |
+|------|--------|---------|----------|
+| 1 | Click **Docs** in header (or land on `/docs`) | F01, F05 | [MCK-15](mockups.md#mck-15-docs-browser-desktop) |
+| 2 | Expand phase folder (e.g. `2-features/`) in sidebar tree | F05 | [MCK-17](mockups.md#mck-17-docs-tree-and-content) |
+| 3 | Select a `.md` file — read rendered headings, tables, and prose | F05 | [MCK-17](mockups.md#mck-17-docs-tree-and-content) |
+| 4 | View Mermaid diagram and embedded SVG mockup in content | F05 | [MCK-17](mockups.md#mck-17-docs-tree-and-content) |
+| 5 | Follow relative link to another product `.md` file — pane updates in-viewer | F05 | [MCK-17](mockups.md#mck-17-docs-tree-and-content) |
+
+### Alternate flows
+
+| Branch | When | Outcome | UI state |
+|--------|------|---------|----------|
+| Mobile tree | Narrow viewport | Toggle tree drawer before file pick | [MCK-16](mockups.md#mck-16-docs-browser-mobile) |
+| Single file only | Visitor reads one doc and leaves | Partial SCN-04 — single-artifact awareness | [MCK-15](mockups.md#mck-15-docs-browser-desktop) |
+| From SCN-01 | Visitor opens Docs after Home without About | Cross-route via header nav | [MCK-06](mockups.md#mck-06-home-full-desktop) → [MCK-15](mockups.md#mck-15-docs-browser-desktop) |
+
+### Visual flow
+
+```mermaid
+flowchart LR
+    A["Docs nav\nMCK-15"] --> B["Expand tree\nMCK-17"]
+    B --> C["Read markdown\nMCK-17"]
+    C --> D["Mermaid + SVG\nMCK-17"]
+    D --> E["In-viewer link\nMCK-17"]
+```
+
+Journey storyboard SVG: —
+
+---
+
 ## Coverage
 
 | Scenario | Journey | Must UI flow steps covered |
 |----------|---------|---------------------------|
-| SCN-01 | JRN-01 | F01 shell, F02 hero → benefits → how-it-works → About band; F03 optional sections |
+| SCN-01 | JRN-01 | F01 shell, F02 hero → benefits → how-it-works → About band; F03 optional sections; F05 optional via Docs nav |
 | SCN-02 | JRN-02 | F02 benefits + workflow judgment; F03 credibility alternate |
 | SCN-03 | JRN-03 | F03 author LinkedIn; F04 footer LinkedIn; F02 quality demo |
+| SCN-04 | JRN-04 | F05 tree navigation, markdown pane, Mermaid/SVG, in-viewer links |
 
 | Feature UI flow | Journey(s) |
 |-----------------|------------|
@@ -128,3 +165,4 @@ Journey storyboard SVG: —
 | F02 — full Home flow | JRN-01, JRN-02, JRN-03 |
 | F03 — full About flow | JRN-01 (optional), JRN-02 (alternate), JRN-03 |
 | F04 — footer LinkedIn | JRN-03 |
+| F05 — documentation browser | JRN-04 |

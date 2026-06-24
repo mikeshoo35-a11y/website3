@@ -10,7 +10,7 @@ Assumptions, UI intent, screen inventory, and component catalog for the **AI Fri
 | DSA-02 | Light corporate consulting theme — warm off-white surface, white elevated bands, teal accent | [GOL-02](../1-scope/stakeholders-and-goals.md#gol-02-brand-credibility), [ADR-02](../3-arch/solution-strategy.md#adr-02-tailwind-css-styling) | Token palette in [library.md](library.md); no dark mode in MVP |
 | DSA-03 | Methodology-first content hierarchy — educational sections lead; no hero-level hire-me or contact CTAs | [Non-Goals](../1-scope/stakeholders-and-goals.md#non-goals), [GOL-01](../1-scope/stakeholders-and-goals.md#gol-01-educate-practitioners) | Home hero CTA scrolls to benefits only; contact paths are understated |
 | DSA-04 | Optional LinkedIn contact only — subtle text links in About author section and footer; no forms or icons | [GOL-03](../1-scope/stakeholders-and-goals.md#gol-03-optional-contact), [NFR-05](../3-arch/solution-strategy.md#nfr-05-external-link-security) | [CMP-08](#cmp-08-external-link) styling; `target="_blank"` + `rel="noopener noreferrer"` |
-| DSA-05 | Static marketing site — two primary routes (Home, About) plus 404 inside shared shell | [NFR-04](../3-arch/solution-strategy.md#nfr-04-static-architecture), [ADR-01](../3-arch/solution-strategy.md#adr-01-nextjs-app-router-with-ssg-on-vercel) | No auth UI, CMS chrome, or dynamic nav |
+| DSA-05 | Static marketing site — Home, About, **Docs**, and 404 inside shared shell | [NFR-04](../3-arch/solution-strategy.md#nfr-04-static-architecture), [ADR-01](../3-arch/solution-strategy.md#adr-01-nextjs-app-router-with-ssg-on-vercel) | No auth UI, CMS chrome, or dynamic nav beyond three primary routes |
 | DSA-06 | Responsive breakpoint at 768px — inline nav at desktop; hamburger drawer below | [NFR-01](../3-arch/solution-strategy.md#nfr-01-responsive-layout), [FR-F01-04](../2-features/F01-site-shell-layout.md#fr-f01-04) | [CMP-02](#cmp-02-mobile-nav-drawer) replaces inline nav; layouts stack on mobile |
 | DSA-07 | Centred content column max ~1200px; header and footer bands full-bleed | [FR-F01-05](../2-features/F01-site-shell-layout.md#fr-f01-05), [Constraints](../1-scope/stakeholders-and-goals.md#constraints) | Main slot constrained; chrome spans viewport width |
 
@@ -40,6 +40,9 @@ Every Must-path view from feature **UI flow**. Section-level mockups support jou
 | MCK-12 | About — full page (desktop) | `/about` | F03 | [MCK-12](mockups.md#mck-12-about-full-desktop) | JRN-01, JRN-02, JRN-03 |
 | MCK-13 | About — full page (mobile) | `/about` | F03 | [MCK-13](mockups.md#mck-13-about-full-mobile) | JRN-02 |
 | MCK-14 | 404 not found | `*` | F01 | [MCK-14](mockups.md#mck-14-not-found) | — |
+| MCK-15 | Docs — full page (desktop) | `/docs` | F05 | [MCK-15](mockups.md#mck-15-docs-browser-desktop) | JRN-04 |
+| MCK-16 | Docs — full page (mobile) | `/docs` | F05 | [MCK-16](mockups.md#mck-16-docs-browser-mobile) | JRN-04 |
+| MCK-17 | Docs — tree + content pane | `/docs` | F05 | [MCK-17](mockups.md#mck-17-docs-tree-and-content) | JRN-04 |
 
 ## Component inventory {#component-inventory}
 
@@ -51,9 +54,9 @@ Structured catalog — each component answers **What**, **Looks**, **Behaves**. 
 
 | Aspect | Description |
 |--------|-------------|
-| **What** | Global chrome band with **AI Friendly Docs** brand (links to Home) and primary nav (**Home**, **About**). Establishes consistent orientation on every route. |
+| **What** | Global chrome band with **AI Friendly Docs** brand (links to Home) and primary nav (**Home**, **About**, **Docs**). Establishes consistent orientation on every route. |
 | **Looks** | Full-bleed band on `--color-surface-elevated` with bottom border `--color-border`. Brand left; nav links right at ≥768px using `--font-size-small` and `--color-text`. Active route link uses `--color-primary` (teal text or underline). Horizontal padding `--spacing-content-x`; inner row respects `--max-width-content` centred. |
-| **Behaves** | Brand click navigates to `/`. Nav links use client routing with active state on current path. Below `--breakpoint-mobile` (768px), inline links hide and hamburger control appears ([CMP-02](#cmp-02-mobile-nav-drawer)). Keyboard: Tab through brand and links; visible `:focus-visible` ring. Landmarks: `<header>` with `nav` for primary navigation. |
+| **Behaves** | Brand click navigates to `/`. Nav links use client routing with active state on current path (including `/docs`). Below `--breakpoint-mobile` (768px), inline links hide and hamburger control appears ([CMP-02](#cmp-02-mobile-nav-drawer)). Keyboard: Tab through brand and links; visible `:focus-visible` ring. Landmarks: `<header>` with `nav` for primary navigation. |
 
 ### CMP-02: Mobile Nav Drawer {#cmp-02-mobile-nav-drawer}
 
@@ -125,6 +128,26 @@ Structured catalog — each component answers **What**, **Looks**, **Behaves**. 
 | **Looks** | Muted styling: `--color-text-muted` default, `--color-primary` on hover. `--font-size-small` in footer; inline within author prose on About. No button shape or hire-me banner. |
 | **Behaves** | Opens `https://www.linkedin.com/in/mikhail-shumilov-549a57292/` in new tab with `target="_blank"` and `rel="noopener noreferrer"`. **Hover / focus-visible:** colour emphasis only. Same URL in footer (F04) and author section (F03). |
 
+### CMP-09: Doc Tree Sidebar {#cmp-09-doc-tree-sidebar}
+
+**Used in:** F05 · **Screens:** MCK-15, MCK-16, MCK-17
+
+| Aspect | Description |
+|--------|-------------|
+| **What** | Cursor-style folder tree for product documentation (`1-scope/`–`5-dev/`). Lets practitioners pick `.md` files to read. |
+| **Looks** | Fixed-width left column (~260px) on desktop: `--color-surface-elevated` background, `--color-border` right edge. Folder rows with chevron + label; file rows indented with `.md` icon placeholder. Selected file: `--color-primary` text or left accent bar. `--font-size-small` tree labels; scrollable overflow-y. |
+| **Behaves** | **Expand/collapse** folders on click. **Select** file → updates URL and content pane. **Mobile:** hidden by default; [CMP-10](#cmp-10-docs-layout) toggle reveals drawer overlay. Keyboard: arrow keys optional; focus visible on rows. `aria-expanded` on folders; current file `aria-current="page"`. |
+
+### CMP-10: Markdown Content Pane {#cmp-10-markdown-content-pane}
+
+**Used in:** F05 · **Screens:** MCK-15, MCK-16, MCK-17
+
+| Aspect | Description |
+|--------|-------------|
+| **What** | Main reading area for rendered product markdown — headings, tables, code, Mermaid diagrams, SVG images. |
+| **Looks** | Flexible right column on `--color-surface` with prose styling: `--font-size-body`, `--color-text`, comfortable line height. Headings use `--font-size-h1`/`h2` scale. Code blocks monospace on `--color-surface-elevated`. Tables with `--color-border` grid. Mermaid diagrams centred with max-width 100%. Images (SVG mockups) scale to pane width. Padding `--spacing-content-x`. |
+| **Behaves** | Renders static markdown at load. **Relative `.md` links** navigate in-app on `/docs`. **External links** use [CMP-08](#cmp-08-external-link) pattern. Scrollable independently of tree. On mobile, full width when tree collapsed. |
+
 ## Layout patterns {#layout-patterns}
 
 | Pattern | Description | Feature |
@@ -135,3 +158,4 @@ Structured catalog — each component answers **What**, **Looks**, **Behaves**. 
 | Numbered steps | Three ordered steps with step number, title, and short prose | F02 |
 | Linear content sections | Page hero then stacked prose sections with `--spacing-section-y` rhythm | F03 |
 | Soft credibility band | Low-emphasis [CMP-07](#cmp-07-text-link) to About or Home at page bottom — not a hero CTA | F02, F03 |
+| Docs split pane | [CMP-09](#cmp-09-doc-tree-sidebar) left + [CMP-10](#cmp-10-markdown-content-pane) right; tree collapses on mobile | F05 |

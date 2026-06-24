@@ -13,7 +13,7 @@
 
 **Exclude:** screen layout → feature **UI flow**; static block inventory → [building-blocks.md](building-blocks.md); field-level data (none in MVP).
 
-Per-feature route rendering, in-page scroll, and single-block nav updates stay in [F01](../2-features/F01-site-shell-layout.md), [F02](../2-features/F02-home-page.md), [F03](../2-features/F03-about-page.md), and [F04](../2-features/F04-optional-linkedin-contact.md) **Runtime flow** sections.
+Per-feature route rendering, in-page scroll, and single-block nav updates stay in [F01](../2-features/F01-site-shell-layout.md), [F02](../2-features/F02-home-page.md), [F03](../2-features/F03-about-page.md), [F04](../2-features/F04-optional-linkedin-contact.md), and [F05](../2-features/F05-documentation-browser.md) **Runtime flow** sections.
 
 ## Scenario Index
 
@@ -21,7 +21,8 @@ Per-feature route rendering, in-page scroll, and single-block nav updates stay i
 |----|------|----------|---------|----------|--------|----------|
 | RT-01 | Practitioner cross-route journey | Use case | Visitor lands on `/` | F01, F02, F03 | BB-01, BB-02, BB-03, BB-04 | sequence |
 | RT-02 | External LinkedIn contact | External interface | Visitor clicks LinkedIn link | F03, F04 | BB-02.3, BB-04, LinkedIn (external) | sequence |
-| RT-03 | Static build and deploy | Operational | Git push or manual Vercel deploy | F01, F02, F03, F04 | BB-01, Vercel (external) | sequence |
+| RT-03 | Static build and deploy | Operational | Git push or manual Vercel deploy | F01, F02, F03, F04, F05 | BB-01, BB-06.3, Vercel (external) | sequence |
+| RT-04 | Documentation browser journey | Use case | Visitor opens `/docs` from nav or deep link | F01, F05 | BB-02, BB-06, BB-06.1, BB-06.2 | sequence |
 
 ## Use case scenarios
 
@@ -65,6 +66,44 @@ sequenceDiagram
 |-----------|-----------|--------|
 | Visitor leaves after Home only | Partial SCN-01 goal — awareness achieved; no server-side event | BB-03 |
 | Unknown URL | 404 page within shell | BB-02.1 |
+
+### RT-04: Documentation browser journey {#rt-04-documentation-browser-journey}
+
+**Category:** Use case · **Trigger:** Practitioner opens Docs from header or `/docs` URL ([SCN-04](../1-scope/business-scenarios.md#scn-04-explore-live-docs))
+
+**Building blocks:** [BB-02](building-blocks.md#bb-02-site-shell), [BB-06](building-blocks.md#bb-06-documentation-browser), [BB-06.1](building-blocks.md#bb-061-doc-tree-navigation), [BB-06.2](building-blocks.md#bb-062-markdown-content-pane)
+
+**Features:** [F01](../2-features/F01-site-shell-layout.md), [F05](../2-features/F05-documentation-browser.md) · **Traces to:** [FR-F05-01](../2-features/F05-documentation-browser.md#fr-f05-01)–[FR-F05-08](../2-features/F05-documentation-browser.md#fr-f05-08)
+
+#### Scenario
+
+```mermaid
+sequenceDiagram
+    actor Visitor
+    participant Shell as BB-02 Site Shell
+    participant Docs as BB-06 Docs Browser
+    participant Tree as BB-06.1 Doc Tree
+    participant Pane as BB-06.2 Markdown Pane
+    Visitor->>Shell: Click Docs nav FR-F05-02
+    Shell->>Docs: GET /docs FR-F05-01
+    Docs->>Tree: Render phase folders FR-F05-03
+    Visitor->>Tree: Select .md file
+    Tree->>Pane: Load markdown FR-F05-04
+    Visitor->>Pane: Click relative .md link FR-F05-07
+    Pane->>Pane: Render target + Mermaid FR-F05-05
+```
+
+#### Notable aspects
+
+- **Data:** Static index from BB-06.3 at build — no runtime fetch ([NFR-04](solution-strategy.md#nfr-04-static-architecture)).
+- **Navigation:** Relative product links stay on `/docs`; external links open new tab ([FR-F05-08](../2-features/F05-documentation-browser.md#fr-f05-08)).
+
+#### Alternate / error paths
+
+| Condition | Behaviour | Blocks |
+|-----------|-----------|--------|
+| Invalid doc path | Clear not-found message in docs pane or shell 404 | BB-06, BB-02.1 |
+| Mobile viewport | Tree hidden until toggle | BB-06.1 |
 
 ## External interface scenarios
 
@@ -110,7 +149,7 @@ sequenceDiagram
 
 **Building blocks:** [BB-01](building-blocks.md#bb-01-marketing-web-application), Vercel (external)
 
-**Features:** F01, F02, F03, F04
+**Features:** F01, F02, F03, F04, F05
 
 #### Scenario
 
@@ -120,16 +159,19 @@ sequenceDiagram
     participant Git as Git repository
     participant Vercel as Vercel (external)
     participant App as BB-01 Marketing Web App
-    Dev->>Git: Push TSX/content changes
+    participant Index as BB-06.3 Doc Index
+    Dev->>Git: Push TSX/content/doc changes
     Git->>Vercel: Trigger build webhook
     Vercel->>App: next build (SSG)
-    App->>App: Pre-render /, /about, not-found
+    App->>Index: Scan 1-scope–5-dev FR-F05-11
+    Index->>App: Doc tree + content map
+    App->>App: Pre-render /, /about, /docs, not-found
     Vercel->>Vercel: Publish static assets to CDN
 ```
 
 #### Notable aspects
 
-- **Content model:** Marketing copy in TSX components ([ADR-04](solution-strategy.md#adr-04-tsx-component-content-model)) — copy edits require rebuild.
+- **Content model:** Marketing copy in TSX components ([ADR-04](solution-strategy.md#adr-04-tsx-component-content-model)); product docs ingested at build per [ADR-06](solution-strategy.md#adr-06-build-time-product-doc-browser).
 - **Quality gate:** Pre-deploy Lighthouse and Playwright checks per [NFR-03](solution-strategy.md#nfr-03-performance-seo), [ADR-05](solution-strategy.md#adr-05-playwright-and-vitest-testing).
 
 ## Error and degradation patterns
